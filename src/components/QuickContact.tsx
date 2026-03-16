@@ -1,0 +1,61 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Mail, Twitter, ExternalLink } from "lucide-react";
+
+export default function QuickContact() {
+  return (
+    <section className="py-12 px-4 max-w-4xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        className="hud-glass p-8 rounded-3xl border-secondary/30 relative overflow-hidden group"
+      >
+        {/* Background Glow */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 blur-3xl rounded-full -mr-16 -mt-16 group-hover:bg-secondary/20 transition-colors" />
+        
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+          <div className="text-center md:text-left">
+            <h2 className="font-space font-bold text-2xl text-offwhite mb-2 uppercase tracking-tight">
+              Quick <span className="text-secondary">Contact</span>
+            </h2>
+            <p className="text-starlight text-sm font-inter max-w-sm">
+              Ready to start a new quest? Reach out directly via email or X (Twitter) for collaborations.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+            <a 
+              href="mailto:giganticjosha@gmail.com"
+              className="flex items-center justify-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-primary/10 transition-all group/link"
+            >
+              <Mail size={18} className="text-primary" />
+              <div className="flex flex-col items-start">
+                <span className="text-[10px] font-mono text-starlight/50 uppercase">Email_Direct</span>
+                <span className="text-sm font-space font-bold text-offwhite group-hover/link:text-primary transition-colors">giganticjosha@gmail.com</span>
+              </div>
+            </a>
+
+            <a 
+              href="https://x.com/Agaboo07"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-secondary/50 hover:bg-secondary/10 transition-all group/link"
+            >
+              <Twitter size={18} className="text-secondary" />
+              <div className="flex flex-col items-start">
+                <span className="text-[10px] font-mono text-starlight/50 uppercase">Follow_X</span>
+                <span className="text-sm font-space font-bold text-offwhite group-hover/link:text-secondary transition-colors">@Agaboo07</span>
+              </div>
+              <ExternalLink size={12} className="text-starlight/30 ml-2" />
+            </a>
+          </div>
+        </div>
+
+        {/* Decorative corner accent */}
+        <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-secondary/20 rounded-bl-3xl" />
+      </motion.div>
+    </section>
+  );
+}

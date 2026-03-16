@@ -1,0 +1,8 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#0B0F1A"/>
+  <rect x="20" y="20" width="360" height="260" stroke="#FFD700" stroke-width="2" stroke-dasharray="10 10" opacity="0.3"/>
+  <path d="M100 100H300M100 140H260M100 180H220" stroke="#FFD700" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="320" cy="200" r="40" stroke="#FF2DAA" stroke-width="2"/>
+  <path d="M305 200L315 210L335 190" stroke="#FF2DAA" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="200" y="260" text-anchor="middle" fill="#FFD700" font-family="monospace" font-size="12">[ GENERATING_PROMPT... ]</text>
+</svg>
