@@ -1,0 +1,7 @@
+# Handle line endings automatically for files detected as text 
+# and leave binary files untouched.
+* text=auto
+
+# Force LF for all text files
+# This ensures consistency across Windows, Mac, and Linux
+* text eol=lf

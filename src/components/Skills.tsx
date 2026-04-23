@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Smartphone, Cpu, Palette, Terminal, Database, Globe, Zap, Shield, Layout } from "lucide-react";
+import { Code2, Smartphone, Cpu, Palette, Terminal, Database, Globe, Zap, Shield, Layout, WalletCards,} from "lucide-react";
 
 const SKILL_CATEGORIES = [
   {
     title: "Programming Languages",
     skills: [
-      { name: "HTML", icon: Globe, level: 95, color: "primary" },
-      { name: "CSS", icon: Layout, level: 92, color: "secondary" },
+      { name: "HTML", icon: Globe, level: 100, color: "primary" },
+      { name: "CSS", icon: Layout, level: 96, color: "secondary" },
       { name: "JavaScript", icon: Zap, level: 90, color: "highlight" },
       { name: "TypeScript", icon: Shield, level: 88, color: "primary" },
     ]
@@ -31,6 +31,8 @@ const SKILL_CATEGORIES = [
       { name: "Git / GitHub", icon: Terminal, level: 95, color: "secondary" },
       { name: "Vercel / VS Code", icon: Terminal, level: 92, color: "highlight" },
       { name: "After Effects / DaVinci", icon: Palette, level: 70, color: "primary" },
+      { name: "Fast API", icon: Code2, level: 89, color: "highlight" },
+      { name: "Payment Integration" , icon: WalletCards , color:"highlight"},
     ]
   },
   {
@@ -39,6 +41,10 @@ const SKILL_CATEGORIES = [
       { name: "Gemini CLI", icon: Cpu, level: 85, color: "secondary" },
       { name: "CVAT / Labelbox", icon: Database, level: 75, color: "highlight" },
       { name: "Scale AI", icon: Cpu, level: 80, color: "primary" },
+      { name: "Claude prompt engineer" , icon: Cpu, level:78,
+        color:"secondary"},
+      { name: "AI-model Trainer" , icon: Cpu, level:97,
+        color:"highlight"},
     ]
   }
 ];
@@ -72,7 +78,7 @@ export default function Skills() {
               {category.title}
             </motion.h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {category.skills.map((skill, idx) => (
                 <motion.div
                   key={idx}

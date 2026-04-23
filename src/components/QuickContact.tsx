@@ -25,15 +25,15 @@ export default function QuickContact() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto overflow-hidden">
             <a 
               href="mailto:giganticjosha@gmail.com"
-              className="flex items-center justify-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-primary/10 transition-all group/link"
+              className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-primary/10 transition-all group/link w-full sm:w-auto"
             >
-              <Mail size={18} className="text-primary" />
-              <div className="flex flex-col items-start">
+              <Mail size={18} className="text-primary shrink-0" />
+              <div className="flex flex-col items-start overflow-hidden">
                 <span className="text-[10px] font-mono text-starlight/50 uppercase">Email_Direct</span>
-                <span className="text-sm font-space font-bold text-offwhite group-hover/link:text-primary transition-colors">giganticjosha@gmail.com</span>
+                <span className="text-sm font-space font-bold text-offwhite group-hover/link:text-primary transition-colors truncate w-full">giganticjosha@gmail.com</span>
               </div>
             </a>
 
@@ -41,14 +41,14 @@ export default function QuickContact() {
               href="https://x.com/Agaboo07"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-secondary/50 hover:bg-secondary/10 transition-all group/link"
+              className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-secondary/50 hover:bg-secondary/10 transition-all group/link w-full sm:w-auto"
             >
-              <Twitter size={18} className="text-secondary" />
-              <div className="flex flex-col items-start">
+              <Twitter size={18} className="text-secondary shrink-0" />
+              <div className="flex flex-col items-start overflow-hidden">
                 <span className="text-[10px] font-mono text-starlight/50 uppercase">Follow_X</span>
-                <span className="text-sm font-space font-bold text-offwhite group-hover/link:text-secondary transition-colors">@Agaboo07</span>
+                <span className="text-sm font-space font-bold text-offwhite group-hover/link:text-secondary transition-colors truncate w-full">@Agaboo07</span>
               </div>
-              <ExternalLink size={12} className="text-starlight/30 ml-2" />
+              <ExternalLink size={12} className="text-starlight/30 ml-2 shrink-0" />
             </a>
           </div>
         </div>

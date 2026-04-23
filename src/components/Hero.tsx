@@ -4,37 +4,48 @@ import { motion } from "framer-motion";
 import { User } from "lucide-react";
 import { useState, useEffect } from "react";
 
+import Image from "next/image";
+
 function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
   const [stage, setStage] = useState<"entering" | "beaming" | "chatting" | "exiting" | "gone">("entering");
+  const [beamHeight, setBeamHeight] = useState(320);
 
   useEffect(() => {
+    // Adjust beam height based on screen size
+    const updateBeamHeight = () => {
+      setBeamHeight(window.innerWidth < 640 ? 240 : 320);
+    };
+    updateBeamHeight();
+    window.addEventListener("resize", updateBeamHeight);
+    
     const sequence = async () => {
-      // 1. Enter and hover (tightened from 1.5s to 0.8s)
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      // 1. Enter and hover (tightened from 0.8s to 0.5s)
+      await new Promise((resolve) => setTimeout(resolve, 500));
       setStage("beaming");
       
-      // 2. Beam down and reveal avatar
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      // 2. Beam down and reveal avatar (tightened from 0.6s to 0.4s)
+      await new Promise((resolve) => setTimeout(resolve, 400));
       onAvatarReveal();
       
-      // 3. Chat bubble (tightened from 1s to 0.5s)
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      // 3. Chat bubble (tightened from 0.5s to 0.3s)
+      await new Promise((resolve) => setTimeout(resolve, 300));
       setStage("chatting");
       
-      // 4. Fly away
-      await new Promise((resolve) => setTimeout(resolve, 2500));
+      // 4. Fly away (tightened from 2.5s to 1.5s)
+      await new Promise((resolve) => setTimeout(resolve, 1500));
       setStage("exiting");
       
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 800));
       setStage("gone");
     };
     sequence();
+    return () => window.removeEventListener("resize", updateBeamHeight);
   }, [onAvatarReveal]);
 
   if (stage === "gone") return null;
 
   return (
-    <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-48 h-48 z-50 pointer-events-none">
+    <div className="absolute -top-32 sm:-top-40 left-1/2 -translate-x-1/2 w-32 sm:w-48 h-32 sm:h-48 z-[100] pointer-events-none">
       {/* UFO Body */}
       <motion.div
         initial={{ y: -200, x: 200, opacity: 0, scale: 0.5 }}
@@ -86,7 +97,7 @@ function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
             initial={{ scale: 0, opacity: 0, y: 10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0, opacity: 0 }}
-            className="absolute -top-14 left-1/2 -translate-x-1/2 bg-primary/90 text-white px-4 py-2 rounded-lg font-mono text-[10px] shadow-[0_0_20px_rgba(0,245,255,0.4)] border border-primary/50 whitespace-nowrap backdrop-blur-sm"
+            className="absolute -top-10 sm:-top-14 left-1/2 -translate-x-1/2 bg-primary/90 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-mono text-[8px] sm:text-[10px] shadow-[0_0_20px_rgba(0,245,255,0.4)] border border-primary/50 whitespace-nowrap backdrop-blur-sm"
           >
             <span className="text-secondary mr-2">{">"}</span>
             PLAYER_1 IDENTIFIED
@@ -99,43 +110,53 @@ function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.2, 1] }}
-            className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-4 bg-primary/60 blur-md rounded-full"
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 w-8 sm:w-12 h-3 sm:h-4 bg-primary/60 blur-md rounded-full"
           />
         )}
       </motion.div>
 
-      {/* Light Beam */}
+      {/* Light Beam (Glowy Particle Effect) */}
       {stage === "beaming" && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: [0, 0.6, 0.4], height: 320 }}
+          animate={{ opacity: 1, height: beamHeight }}
           exit={{ opacity: 0, height: 0 }}
-          className="absolute top-[45px] left-1/2 -translate-x-1/2 w-40 origin-top bg-gradient-to-b from-primary/60 via-primary/20 to-transparent clip-path-beam"
-          style={{
-            clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
-          }}
+          className="absolute top-[35px] sm:top-[45px] left-1/2 -translate-x-1/2 w-48 sm:w-64 origin-top pointer-events-none"
         >
-          {/* Beam Particles (Stable distribution) */}
+          {/* Particle Field */}
           <div className="absolute inset-0 overflow-hidden">
-            {[...Array(12)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ 
-                  y: 320, 
-                  opacity: [0, 1, 1, 0],
-                  x: [0, (i % 2 === 0 ? 10 : -10), 0]
-                }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 1.5 + (i * 0.1), 
-                  delay: i * 0.15,
-                  ease: "linear"
-                }}
-                className="absolute w-1 h-1 bg-white rounded-full"
-                style={{ left: `${(i * 8.33)}%` }}
-              />
-            ))}
+            {[...Array(45)].map((_, i) => {
+              const size = Math.random() * 2 + 1;
+              const duration = 1.2 + Math.random() * 0.8;
+              const delay = Math.random() * 2;
+              // Randomized starting horizontal offset (Top of trapezoid)
+              const startX = (Math.random() - 0.5) * 60;
+              // Randomized ending horizontal offset (Bottom of trapezoid)
+              const endX = (Math.random() - 0.5) * 180;
+              
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ y: -20, opacity: 0, x: startX }}
+                  animate={{ 
+                    y: beamHeight, 
+                    opacity: [0, 1, 0.8, 0],
+                    x: [startX, endX] 
+                  }}
+                  transition={{ 
+                    repeat: Infinity, 
+                    duration: duration, 
+                    delay: delay,
+                    ease: "linear"
+                  }}
+                  className="absolute left-1/2 rounded-full bg-white shadow-[0_0_12px_#00F5FF]"
+                  style={{ 
+                    width: size,
+                    height: size,
+                  }}
+                />
+              );
+            })}
           </div>
         </motion.div>
       )}
@@ -148,7 +169,7 @@ function Avatar() {
   const [revealed, setRevealed] = useState(false);
 
   return (
-    <div className="relative w-40 h-40 md:w-64 md:h-64 shrink-0 mb-8 md:mb-0">
+    <div className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 shrink-0 mb-8 md:mb-0">
       {/* Interaction Component */}
       <UfoInteraction onAvatarReveal={() => setRevealed(true)} />
 
@@ -174,18 +195,24 @@ function Avatar() {
           initial={{ opacity: 0, x: 20 }}
           animate={revealed ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
           transition={{ delay: 0.5 }}
-          className="absolute -top-2 -right-2 z-20 bg-secondary px-2 py-1 rounded text-[10px] font-bold text-white shadow-pink border border-white/20"
+          className="absolute -top-2 -right-2 z-20 bg-secondary px-2 py-1 rounded text-[10px] font-bold text-white shadow-pink border border-white/20 overflow-hidden"
         >
-          S-TIER
+          <motion.div 
+            animate={{ x: ["-100%", "200%"] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+          />
+          <span className="relative z-10">S-TIER</span>
         </motion.div>
 
         <div className="relative w-full h-full rounded-full border-2 border-primary/50 overflow-hidden hud-glass flex items-center justify-center">
           {!hasError ? (
             <>
-              <img
+              <Image
                 src="/assets/avatar.png"
                 alt="Joshua Adesina"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
                 onError={() => setHasError(true)}
               />
               {/* Scanning Line */}
@@ -219,14 +246,14 @@ function Avatar() {
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-20">
+    <section id="hero" className="min-h-screen flex flex-col items-center justify-center relative px-4 py-20">
       {/* Background Decor */}
-      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="container max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 z-10">
+      <div className="container max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 relative">
         <Avatar />
 
         <motion.div 
@@ -270,8 +297,8 @@ export default function Hero() {
             className="font-inter text-lg md:text-xl lg:text-2xl text-starlight max-w-2xl mx-auto md:mx-0 mb-8 leading-relaxed"
           >
             Software developer dedicated to building high-performance web applications and interactive experiences. 
-            I specialize in crafting clean code with <span className="text-secondary italic">JavaScript and TypeScript</span>, 
-            leveraging modern AI workflows to solve complex problems.
+            I specialize in crafting a no spaghetti issues clean code with <span className="text-secondary italic">JavaScript,TypeScript And Python</span>, 
+            leveraging modern AI workflows and human minds to solve complex problems.
           </motion.h2>
 
           <motion.div 

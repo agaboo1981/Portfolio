@@ -9,10 +9,10 @@ const INITIAL_MESSAGES = [
 ];
 
 const FAQ = [
-  { q: "Who is Joshua?", a: "Joshua is a software developer dedicated to building high-performance web applications and interactive experiences. He bridges the gap between clean code and creative problem-solving." },
-  { q: "What's his tech stack?", a: "He's a JS/TS specialist working with React/Next.js, Node.js, and MongoDB. He also builds mobile apps with React Native, Expo, and Flutter." },
-  { q: "Any special abilities?", a: "He's highly proficient in API Integration, AI workflows (Gemini CLI), and creating fluid, game-like UI/UX with Framer Motion." },
-  { q: "Tell me about the Predictor!", a: "Joshua led the development of the Collapse Risk Predictor, architecting and implementing 70% of the core machine learning model and prediction logic." },
+  { q: "Who is Joshua?", a: "Joshua is a high-level Full-Stack Architect with a background in Civil Engineering. He builds digital systems with the structural integrity of a skyscraper and the fluidity of a high-FPS game engine." },
+  { q: "What's his tech stack?", a: "His primary loadout includes React/Next.js for the Front-end, Node/Prisma for the Back-end, and a specialized AI Toolkit (Gemini CLI) for rapid development." },
+  { q: "Any special abilities?", a: "Passive: 'Structural Logic' (prevents spaghetti code). Active: 'Rapid Prototyping' (builds MVPs at 2x speed) and 'AI Orchestration' (manages multi-agent systems)." },
+  { q: "Tell me about the Predictor!", a: "That's his 'Boss Fight' victory! He lead-architected a machine learning model to predict corporate collapse, achieving a 92% accuracy rating using Logistic Regression and Streamlit." },
 ];
 
 function Message({ m }: { m: { id: number; sender: string; text: string } }) {
@@ -82,8 +82,8 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-24 px-4 max-w-5xl mx-auto min-h-screen flex flex-col justify-center mt-12 md:mt-0">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section id="about" className="py-24 px-4 max-w-5xl mx-auto min-h-screen flex flex-col justify-center mt-8 sm:mt-12 md:mt-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
         {/* Bio Text */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -91,15 +91,30 @@ export default function About() {
           viewport={{ once: true }}
           className="space-y-6"
         >
+          <div className="inline-block px-3 py-1 rounded bg-primary/10 border border-primary/20 font-mono text-[10px] text-primary uppercase tracking-widest mb-2">
+            Status: Main_Character_Unlocked
+          </div>
           <h2 className="font-space font-bold text-4xl text-offwhite tracking-tight">
             CHARACTER <span className="text-primary">BIO</span>
           </h2>
-          <p className="text-starlight text-lg leading-relaxed font-inter">
-            Joshua Adesina is a software developer crafting high-performance web systems with the precision of a structural engineer. 
-          </p>
-          <p className="text-starlight text-lg leading-relaxed font-inter">
-            Bridging clean code and architectural logic, he builds software that is as sturdy as a bridge and as intuitive as a video game.
-          </p>
+          <div className="space-y-4 font-inter text-starlight text-lg leading-relaxed">
+            <p>
+              By day, I architect robust digital infrastructures. By night, I explore the frontiers of <span className="text-secondary font-bold">AI multi-agent systems</span> and high-performance web experiences.
+            </p>
+            <p>
+              My background in structural engineering gives me a unique lens: I don&apos;t just write code; I build <span className="text-highlight italic">fault-tolerant systems</span> that scale. Every line of code is a structural beam, every API a strategic bridge.
+            </p>
+            <div className="grid grid-cols-2 gap-4 pt-4">
+              <div className="bg-white/5 p-3 rounded border border-white/10 font-mono">
+                <div className="text-[10px] text-primary uppercase">STR (Code Integrity): 90/100</div>
+                <div className="h-1 bg-primary/20 mt-1"><div className="w-[90%] h-full bg-primary" /></div>
+              </div>
+              <div className="bg-white/5 p-3 rounded border border-white/10 font-mono">
+                <div className="text-[10px] text-secondary uppercase">INT (Logic Flow): 95/100</div>
+                <div className="h-1 bg-secondary/20 mt-1"><div className="w-[95%] h-full bg-secondary" /></div>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         {/* AGABOO Chat */}
@@ -107,7 +122,7 @@ export default function About() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="hud-glass rounded-2xl h-[500px] flex flex-col overflow-hidden"
+          className="hud-glass rounded-2xl h-[400px] sm:h-[500px] flex flex-col overflow-hidden"
         >
           {/* Chat Header */}
           <div className="bg-primary/10 px-4 py-3 border-b border-primary/20 flex items-center justify-between">
