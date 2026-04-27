@@ -82,12 +82,9 @@ Open `http://localhost:3000` in your browser.
 - Contact form submission requires valid EmailJS credentials.
 - Some project links may be placeholders while repositories or demos are being finalized.
 
-## Deployment
+## Deployment (Vercel)
 
-This project is ready to deploy on Vercel or any platform that supports Next.js.
-
-For Vercel:
-
-1. Import the repository.
-2. Add the same environment variables from `.env.local`.
-3. Deploy.
+1. Import the repository into Vercel.
+2. Set the project root to this folder if your repo contains multiple projects.
+3. Add the same environment variables from `.env.local`.
+4. Deploy.
