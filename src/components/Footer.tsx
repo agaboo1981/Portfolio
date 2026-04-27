@@ -1,6 +1,7 @@
 "use client";
 
-import { Twitter, Github, Linkedin, ChevronUp } from "lucide-react";
+import {  Github, Linkedin, ChevronUp } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -24,15 +25,15 @@ export default function Footer() {
         {/* Social Links */}
         <div className="flex items-center gap-6">
           <a
-            href="#"
+            href="https://x.com/Agabo07"
             target="_blank"
             rel="noopener noreferrer"
             className="text-starlight transition-all hover:text-primary hover:scale-110"
           >
-            <Twitter size={24} />
+            <FaXTwitter size={24} />
           </a>
           <a
-            href="#"
+            href="https://github.com/agaboo1981"
             target="_blank"
             rel="noopener noreferrer"
             className="text-starlight transition-all hover:text-secondary hover:scale-110"
@@ -40,7 +41,7 @@ export default function Footer() {
             <Github size={24} />
           </a>
           <a
-            href="#"
+            href="https://linkedin.com/in/joshua-adesina"
             target="_blank"
             rel="noopener noreferrer"
             className="text-starlight transition-all hover:text-highlight hover:scale-110"
@@ -67,7 +68,7 @@ export default function Footer() {
           <span className="font-mono text-[8px] text-primary/60 uppercase tracking-widest">System_Status: Optimized</span>
         </div>
         <div className="text-center font-mono text-[10px] text-starlight/20 uppercase tracking-[0.2em]">
-          © {new Date().getFullYear()} Joshua Adesina • All rights reserved • [VERSION: 2.0.26]
+          © {new Date().getFullYear()} Joshua Adesina • All rights reserved • [VERSION: 2.0.27]
         </div>
       </div>
     </footer>

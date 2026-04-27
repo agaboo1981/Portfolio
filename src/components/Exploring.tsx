@@ -16,7 +16,7 @@ const EXPLORING_ITEMS = [
     title: "React Native Mobile Apps",
     description: "Building cross-platform mobile experiences with a focus on high performance.",
     icon: Smartphone,
-    status: "LEARNING",
+    status: "EXPERT",
     color: "secondary"
   },
   {
@@ -30,7 +30,7 @@ const EXPLORING_ITEMS = [
     title: "Multi-provider Fintech APIs",
     description: "Integrating global payment gateways and financial data aggregators.",
     icon: CreditCard,
-    status: "RESEARCHING",
+    status: "EXPERT",
     color: "primary"
   }
 ];

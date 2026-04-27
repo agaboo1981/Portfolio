@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Gamepad2, Cpu, Music, Camera, Trophy, Keyboard } from "lucide-react";
+import { Gamepad2, Cpu, HardHat, Trophy, Keyboard , Film, } from "lucide-react";
 import { useState } from "react";
 import HobbyCard from "./HobbyCard";
 import { useKeyboardShortcut } from "@/hooks/useKeyboardShortcut";
@@ -20,16 +20,16 @@ const hobbies = [
     color: "text-primary",
   },
   {
-    title: "Music Production",
-    description: "Creating retro-wave beats for focus and flow.",
-    icon: Music,
+    title: "Movie Binge Sessions",
+    description: "Watching classic films and discovering hidden gems.",
+    icon: Film,
     color: "text-highlight",
   },
   {
-    title: "Digital Photography",
-    description: "Capturing the beauty of architecture and light.",
-    icon: Camera,
-    color: "text-starlight",
+    title: "Structural Analysis",
+    description: "Analysis of structure in my field of study which is civil engineering",
+    icon: HardHat,
+    color: "text-highlight",
   },
 ];
 

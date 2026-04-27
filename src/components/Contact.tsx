@@ -84,7 +84,7 @@ export default function Contact() {
             </a>
 
             <a 
-              href="https://x.com/Agaboo07" 
+              href="https://x.com/Agabo07" 
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 text-starlight hover:text-secondary transition-all cursor-pointer group w-fit"
@@ -100,7 +100,7 @@ export default function Contact() {
               </div>
               <div className="flex flex-col">
                 <span className="font-mono text-[10px] text-starlight/40 uppercase tracking-tighter">Follow_X</span>
-                <span className="font-space font-bold group-hover:translate-x-1 transition-transform tracking-tight">@Agaboo07</span>
+                <span className="font-space font-bold group-hover:translate-x-1 transition-transform tracking-tight">@Agabo07</span>
               </div>
             </a>
           </div>
