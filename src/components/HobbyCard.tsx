@@ -20,8 +20,8 @@ export default function HobbyCard({ title, description, icon: Icon, color }: Hob
         <Icon size={32} />
       </div>
       <div className="text-center">
-        <h3 className="font-space text-lg font-bold text-offwhite">{title}</h3>
-        <p className="mt-2 text-sm text-starlight">{description}</p>
+        <h3 className="font-space text-lg font-bold text-textMain">{title}</h3>
+        <p className="mt-2 text-sm text-textSecondary">{description}</p>
       </div>
       
       {/* Decorative Corner */}

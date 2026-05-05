@@ -70,13 +70,13 @@ function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
         }
         className="relative"
       >
-        <svg viewBox="0 0 100 60" className="w-full h-auto drop-shadow-[0_0_15px_rgba(0,245,255,0.5)]">
+        <svg viewBox="0 0 100 60" className="w-full h-auto">
           {/* Glass Dome */}
-          <path d="M30 30 Q 50 5 70 30" fill="#00F5FF" fillOpacity="0.3" stroke="#00F5FF" strokeWidth="1" />
+          <path d="M30 30 Q 50 5 70 30" fill="#000000" fillOpacity="0.1" stroke="#000000" strokeWidth="1" />
           {/* Main Body */}
-          <path d="M10 35 Q 50 15 90 35 Q 50 55 10 35" fill="#1A1A1A" stroke="#00F5FF" strokeWidth="1.5" />
+          <path d="M10 35 Q 50 15 90 35 Q 50 55 10 35" fill="#000000" stroke="#000000" strokeWidth="1.5" />
           {/* Bottom Rim */}
-          <path d="M15 37 Q 50 50 85 37" fill="none" stroke="#00F5FF" strokeWidth="0.5" opacity="0.5" />
+          <path d="M15 37 Q 50 50 85 37" fill="none" stroke="#111111" strokeWidth="0.5" opacity="0.3" />
           {/* Pulsing Lights */}
           {[25, 40, 50, 60, 75].map((x, i) => (
             <motion.circle
@@ -84,7 +84,7 @@ function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
               cx={x}
               cy={35 + (i % 2 === 0 ? 5 : 8)}
               r="1.5"
-              fill="#FF2DAA"
+              fill="#111111"
               animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
               transition={{ repeat: Infinity, duration: 1, delay: i * 0.2 }}
             />
@@ -97,21 +97,12 @@ function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
             initial={{ scale: 0, opacity: 0, y: 10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0, opacity: 0 }}
-            className="absolute -top-10 sm:-top-14 left-1/2 -translate-x-1/2 bg-primary/90 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-mono text-[8px] sm:text-[10px] shadow-[0_0_20px_rgba(0,245,255,0.4)] border border-primary/50 whitespace-nowrap backdrop-blur-sm"
+            className="absolute -top-10 sm:-top-14 left-1/2 -translate-x-1/2 bg-primary/90 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-mono text-[8px] sm:text-[10px] border border-primary/50 whitespace-nowrap backdrop-blur-sm"
           >
-            <span className="text-secondary mr-2">{">"}</span>
+            <span className="text-textSecondary mr-2">{">"}</span>
             PLAYER_1 IDENTIFIED
             <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary/90 rotate-45 border-r border-b border-primary/50" />
           </motion.div>
-        )}
-
-        {/* Source Glow at UFO Base */}
-        {stage === "beaming" && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.2, 1] }}
-            className="absolute bottom-4 left-1/2 -translate-x-1/2 w-8 sm:w-12 h-3 sm:h-4 bg-primary/60 blur-md rounded-full"
-          />
         )}
       </motion.div>
 
@@ -149,7 +140,7 @@ function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
                     delay: delay,
                     ease: "linear"
                   }}
-                  className="absolute left-1/2 rounded-full bg-white shadow-[0_0_12px_#00F5FF]"
+                  className="absolute left-1/2 rounded-full bg-primary/30"
                   style={{ 
                     width: size,
                     height: size,
@@ -179,30 +170,14 @@ function Avatar() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative w-full h-full"
       >
-        <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl animate-pulse-slow" />
-        
-        {/* Landing Glow on Avatar */}
-        {!revealed && (
-          <motion.div
-            animate={{ opacity: [0, 0.5, 0] }}
-            transition={{ repeat: Infinity, duration: 1 }}
-            className="absolute inset-0 bg-primary/30 rounded-full blur-xl z-0"
-          />
-        )}
-
         {/* Rank Badge */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={revealed ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
           transition={{ delay: 0.5 }}
-          className="absolute -top-2 -right-2 z-20 bg-secondary px-2 py-1 rounded text-[10px] font-bold text-white shadow-pink border border-white/20 overflow-hidden"
+          className="absolute -top-2 -right-2 z-20 bg-textSecondary px-2 py-1 rounded text-[10px] font-bold text-background border border-primary/20"
         >
-          <motion.div 
-            animate={{ x: ["-100%", "200%"] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-          />
-          <span className="relative z-10">S-TIER</span>
+          <span>S-TIER</span>
         </motion.div>
 
         <div className="relative w-full h-full rounded-full border-2 border-primary/50 overflow-hidden hud-glass flex items-center justify-center">
@@ -215,19 +190,6 @@ function Avatar() {
                 className="object-cover"
                 onError={() => setHasError(true)}
               />
-              {/* Scanning Line */}
-              <motion.div 
-                animate={{ 
-                  top: ["-10%", "110%"],
-                  opacity: [0, 1, 1, 0]
-                }}
-                transition={{ 
-                  duration: 3, 
-                  repeat: Infinity, 
-                  ease: "linear" 
-                }}
-                className="absolute left-0 right-0 h-[2px] bg-primary/60 shadow-[0_0_15px_rgba(0,245,255,0.8)] z-10 pointer-events-none"
-              />
             </>
           ) : (
             <div className="flex flex-col items-center justify-center text-primary/40">
@@ -237,7 +199,7 @@ function Avatar() {
           )}
         </div>
         {/* Decorative rings */}
-        <div className="absolute -inset-2 md:-inset-4 border border-secondary/30 rounded-full animate-[spin_20s_linear_infinite] pointer-events-none" />
+        <div className="absolute -inset-2 md:-inset-4 border border-textSecondary/30 rounded-full animate-[spin_20s_linear_infinite] pointer-events-none" />
         <div className="absolute -inset-4 md:-inset-8 border border-primary/20 rounded-full animate-[spin_30s_linear_infinite_reverse] pointer-events-none" />
       </motion.div>
     </div>
@@ -249,7 +211,7 @@ export default function Hero() {
     <section id="hero" className="min-h-screen flex flex-col items-center justify-center relative px-4 py-20">
       {/* Background Decor */}
       <div className="absolute inset-0 z-0 opacity-30 pointer-events-none overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000012_1px,transparent_1px),linear-gradient(to_bottom,#00000012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px]" />
       </div>
 
@@ -271,20 +233,14 @@ export default function Hero() {
             &gt; Loading Player_1...
           </motion.p>
           
-          <h1 className="font-space font-bold text-5xl md:text-7xl lg:text-8xl mb-4 tracking-tighter text-offwhite overflow-visible">
+          <h1 className="font-space font-bold text-5xl md:text-7xl lg:text-8xl mb-4 tracking-tighter text-textMain overflow-visible">
             <motion.span
               whileHover={{ 
                 skewX: [0, -20, 20, -10, 0],
                 x: [0, -2, 2, -1, 0],
-                textShadow: [
-                  "0 0 0px #00F5FF",
-                  "2px 0 5px #FF2DAA",
-                  "-2px 0 5px #00F5FF",
-                  "0 0 0px #00F5FF"
-                ],
                 transition: { duration: 0.3, repeat: 0 } 
               }}
-              className="inline-block hover:text-secondary transition-colors cursor-default"
+              className="inline-block hover:text-textSecondary transition-colors cursor-default"
             >
               JOSHUA <span className="text-primary">ADESINA</span>
             </motion.span>
@@ -294,10 +250,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="font-inter text-lg md:text-xl lg:text-2xl text-starlight max-w-2xl mx-auto md:mx-0 mb-8 leading-relaxed"
+            className="font-inter text-lg md:text-xl lg:text-2xl text-textSecondary max-w-2xl mx-auto md:mx-0 mb-8 leading-relaxed"
           >
             Software developer dedicated to building high-performance web applications and interactive experiences. 
-            I specialize in crafting a no spaghetti issues clean code with <span className="text-secondary italic">JavaScript,TypeScript And Python</span>, 
+            I specialize in crafting a no spaghetti issues clean code with <span className="text-textSecondary italic">JavaScript,TypeScript And Python</span>, 
             leveraging modern AI workflows and human minds to solve complex problems.
           </motion.h2>
 
@@ -327,7 +283,7 @@ export default function Hero() {
         transition={{ delay: 1, duration: 1 }}
         className="absolute bottom-10 left-10 hidden md:block"
       >
-        <div className="font-mono text-[10px] text-starlight space-y-1">
+        <div className="font-mono text-[10px] text-textSecondary space-y-1">
           <Typewriter text="LVL: 25" delay={1.2} />
           <Typewriter text="CLASS: FULL-STACK ENGINEER" delay={1.4} />
           <Typewriter text="COFFEE_INTAKE: 85%" delay={1.6} />
@@ -335,7 +291,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Hero Bottom Border Divider */}
-      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary/30 z-20 shadow-[0_-2px_10px_rgba(0,245,255,0.2)]" />
+      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary/30 z-20" />
     </section>
   );
 }

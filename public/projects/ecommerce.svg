@@ -1,8 +1,8 @@
 <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="400" height="300" fill="#0B0F1A"/>
-  <rect x="20" y="20" width="360" height="260" stroke="#00F5FF" stroke-width="2" stroke-dasharray="10 10" opacity="0.3"/>
-  <path d="M120 100H280L260 220H140L120 100Z" stroke="#00F5FF" stroke-width="2"/>
-  <path d="M160 100V80C160 57.9086 177.909 40 200 40C222.091 40 240 57.9086 240 80V100" stroke="#FF2DAA" stroke-width="2"/>
-  <circle cx="200" cy="160" r="20" stroke="#00F5FF" stroke-width="1" stroke-dasharray="5 5"/>
-  <text x="200" y="260" text-anchor="middle" fill="#00F5FF" font-family="monospace" font-size="12">[ TRANSACTION_IN_PROGRESS ]</text>
+  <rect width="400" height="300" fill="#ffffff"/>
+  <rect x="20" y="20" width="360" height="260" stroke="#000000" stroke-width="2" stroke-dasharray="10 10" opacity="0.3"/>
+  <path d="M120 100H280L260 220H140L120 100Z" stroke="#000000" stroke-width="2"/>
+  <path d="M160 100V80C160 57.9086 177.909 40 200 40C222.091 40 240 57.9086 240 80V100" stroke="#666666" stroke-width="2"/>
+  <circle cx="200" cy="160" r="20" stroke="#000000" stroke-width="1" stroke-dasharray="5 5"/>
+  <text x="200" y="260" text-anchor="middle" fill="#000000" font-family="monospace" font-size="12">[ TRANSACTION_IN_PROGRESS ]</text>
 </svg>

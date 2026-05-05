@@ -29,19 +29,9 @@ function Message({ m }: { m: { id: number; sender: string; text: string } }) {
     >
       <div className={`p-3 rounded-2xl max-w-[85%] break-words relative overflow-hidden ${
         m.sender === "bot" 
-          ? "bg-primary/10 text-offwhite border border-primary/20 rounded-tl-none" 
-          : "bg-secondary/20 text-offwhite border border-secondary/20 rounded-tr-none"
+          ? "bg-primary/10 text-textMain border border-primary/20 rounded-tl-none" 
+          : "bg-textSecondary/20 text-textMain border border-textSecondary/20 rounded-tr-none"
       }`}>
-        {m.sender === "bot" && (
-          <motion.div
-            animate={{ 
-              x: ["-100%", "200%"],
-              opacity: [0, 0.5, 0] 
-            }}
-            transition={{ duration: 1, repeat: Infinity, repeatDelay: 2 }}
-            className="absolute inset-0 bg-primary/20 -skew-x-12 pointer-events-none"
-          />
-        )}
         {m.text}
       </div>
     </motion.div>
@@ -94,15 +84,15 @@ export default function About() {
           <div className="inline-block px-3 py-1 rounded bg-primary/10 border border-primary/20 font-mono text-[10px] text-primary uppercase tracking-widest mb-2">
             Status: Main_Character_Unlocked
           </div>
-          <h2 className="font-space font-bold text-4xl text-offwhite tracking-tight">
+          <h2 className="font-space font-bold text-4xl text-textMain tracking-tight">
             CHARACTER <span className="text-primary">BIO</span>
           </h2>
-          <div className="space-y-4 font-inter text-starlight text-lg leading-relaxed">
+          <div className="space-y-4 font-inter text-textSecondary text-lg leading-relaxed">
             <p>
-              By day, I architect robust digital infrastructures. By night, I explore the frontiers of <span className="text-secondary font-bold">AI multi-agent systems</span> and high-performance web experiences.
+              By day, I architect robust digital infrastructures. By night, I explore the frontiers of <span className="text-textSecondary font-bold">AI multi-agent systems</span> and high-performance web experiences.
             </p>
             <p>
-              My background in structural engineering gives me a unique lens: I don&apos;t just write code; I build <span className="text-highlight italic">fault-tolerant systems</span> that scale. Every line of code is a structural beam, every API a strategic bridge.
+              My background in structural engineering gives me a unique lens: I don&apos;t just write code; I build <span className="text-primary italic">fault-tolerant systems</span> that scale. Every line of code is a structural beam, every API a strategic bridge.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-4">
               <div className="bg-white/5 p-3 rounded border border-white/10 font-mono">
@@ -110,8 +100,8 @@ export default function About() {
                 <div className="h-1 bg-primary/20 mt-1"><div className="w-[90%] h-full bg-primary" /></div>
               </div>
               <div className="bg-white/5 p-3 rounded border border-white/10 font-mono">
-                <div className="text-[10px] text-secondary uppercase">INT (Logic Flow): 95/100</div>
-                <div className="h-1 bg-secondary/20 mt-1"><div className="w-[95%] h-full bg-secondary" /></div>
+                <div className="text-[10px] text-textSecondary uppercase">INT (Logic Flow): 95/100</div>
+                <div className="h-1 bg-textSecondary/20 mt-1"><div className="w-[95%] h-full bg-textSecondary" /></div>
               </div>
             </div>
           </div>
@@ -136,9 +126,9 @@ export default function About() {
               </div>
             </div>
             {/* System Pulse */}
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-green-500/10 border border-green-500/20">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-[7px] font-mono text-green-500">OPTIMIZED</span>
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-primary/10 border border-primary/20">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <span className="text-[7px] font-mono text-primary">OPTIMIZED</span>
             </div>
           </div>
 
@@ -157,7 +147,7 @@ export default function About() {
                   animate={{ opacity: 1, y: 0 }}
                   className="flex items-start gap-3"
                 >
-                  <div className="bg-primary/10 text-offwhite border border-primary/20 p-3 rounded-2xl rounded-tl-none">
+                  <div className="bg-primary/10 text-textMain border border-primary/20 p-3 rounded-2xl rounded-tl-none">
                     <div className="flex gap-1">
                       <motion.span
                         animate={{ opacity: [0, 1, 0] }}

@@ -29,7 +29,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`hover:text-primary transition-colors whitespace-nowrap ${
-                  link.special ? "text-secondary" : ""
+                  link.special ? "text-textSecondary" : ""
                 }`}
               >
                 {link.label}
@@ -44,7 +44,7 @@ export default function Navbar() {
             </span>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-primary hover:text-secondary transition-colors"
+              className="text-primary hover:text-textSecondary transition-colors"
             >
               {isOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -72,7 +72,7 @@ export default function Navbar() {
                     href={link.href}
                     onClick={() => setIsOpen(false)}
                     className={`text-sm font-space font-medium tracking-widest uppercase ${
-                      link.special ? "text-secondary" : "text-offwhite"
+                      link.special ? "text-textSecondary" : "text-textMain"
                     } hover:text-primary transition-colors`}
                   >
                     {link.label}

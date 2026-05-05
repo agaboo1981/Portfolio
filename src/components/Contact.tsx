@@ -57,14 +57,14 @@ export default function Contact() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center gap-2 mb-2 font-mono text-highlight text-sm uppercase tracking-widest">
-            <span className="w-8 h-[1px] bg-highlight"></span>
+          <div className="flex items-center gap-2 mb-2 font-mono text-primary text-sm uppercase tracking-widest">
+            <span className="w-8 h-[1px] bg-primary"></span>
             Save Point
           </div>
-          <h2 className="text-4xl lg:text-5xl font-space font-bold text-offwhite mb-6">
-            Ready to <span className="text-highlight">Team Up?</span>
+          <h2 className="text-4xl lg:text-5xl font-space font-bold text-textMain mb-6">
+            Ready to <span className="text-primary">Team Up?</span>
           </h2>
-          <p className="text-starlight text-lg mb-8 max-w-md">
+          <p className="text-textSecondary text-lg mb-8 max-w-md">
             Whether you have a boss-level project or just want to chat about code and gaming, 
             my inbox is always open. Save your progress and send a message!
           </p>
@@ -72,13 +72,13 @@ export default function Contact() {
           <div className="space-y-4">
             <a 
               href="mailto:giganticjosha@gmail.com" 
-              className="flex items-center gap-4 text-starlight hover:text-primary transition-all cursor-pointer group w-fit"
+              className="flex items-center gap-4 text-textSecondary hover:text-primary transition-all cursor-pointer group w-fit"
             >
-              <div className="h-10 w-10 rounded-lg border border-primary/20 bg-primary/5 flex items-center justify-center group-hover:shadow-cyan transition-all">
+              <div className="h-10 w-10 rounded-lg border border-primary/20 bg-primary/5 flex items-center justify-center transition-all">
                 <span className="font-mono text-primary group-hover:scale-110 transition-transform">@</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-mono text-[10px] text-starlight/40 uppercase tracking-tighter">Email_Direct</span>
+                <span className="font-mono text-[10px] text-textSecondary/40 uppercase tracking-tighter">Email_Direct</span>
                 <span className="font-space font-bold group-hover:translate-x-1 transition-transform tracking-tight">giganticjosha@gmail.com</span>
               </div>
             </a>
@@ -87,19 +87,19 @@ export default function Contact() {
               href="https://x.com/Agabo07" 
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 text-starlight hover:text-secondary transition-all cursor-pointer group w-fit"
+              className="flex items-center gap-4 text-textSecondary hover:text-primary transition-all cursor-pointer group w-fit"
             >
-              <div className="h-10 w-10 rounded-lg border border-secondary/20 bg-secondary/5 flex items-center justify-center group-hover:shadow-pink transition-all">
+              <div className="h-10 w-10 rounded-lg border border-textSecondary/20 bg-textSecondary/5 flex items-center justify-center transition-all">
                 <svg 
                   viewBox="0 0 24 24" 
                   aria-hidden="true" 
-                  className="h-5 w-5 fill-secondary group-hover:scale-110 transition-transform"
+                  className="h-5 w-5 fill-textSecondary group-hover:scale-110 transition-transform"
                 >
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-mono text-[10px] text-starlight/40 uppercase tracking-tighter">Follow_X</span>
+                <span className="font-mono text-[10px] text-textSecondary/40 uppercase tracking-tighter">Follow_X</span>
                 <span className="font-space font-bold group-hover:translate-x-1 transition-transform tracking-tight">@Agabo07</span>
               </div>
             </a>
@@ -115,35 +115,35 @@ export default function Contact() {
         >
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <label className="font-mono text-xs uppercase text-starlight ml-1">Hero Name</label>
+              <label className="font-mono text-xs uppercase text-textSecondary ml-1">Hero Name</label>
               <input
                 required
                 name="user_name"
                 type="text"
                 placeholder="How should I call you?"
-                className="w-full terminal-input placeholder:text-starlight/30"
+                className="w-full terminal-input placeholder:text-textSecondary/30"
               />
             </div>
             
             <div className="space-y-2">
-              <label className="font-mono text-xs uppercase text-starlight ml-1">Comm Channel (Email)</label>
+              <label className="font-mono text-xs uppercase text-textSecondary ml-1">Comm Channel (Email)</label>
               <input
                 required
                 name="user_email"
                 type="email"
                 placeholder="Where should I reply?"
-                className="w-full terminal-input placeholder:text-starlight/30"
+                className="w-full terminal-input placeholder:text-textSecondary/30"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="font-mono text-xs uppercase text-starlight ml-1">The Quest Details (Message)</label>
+              <label className="font-mono text-xs uppercase text-textSecondary ml-1">The Quest Details (Message)</label>
               <textarea
                 required
                 name="message"
                 rows={4}
                 placeholder="What's the objective?"
-                className="w-full terminal-input placeholder:text-starlight/30 resize-none"
+                className="w-full terminal-input placeholder:text-textSecondary/30 resize-none"
               />
             </div>
 
@@ -166,7 +166,7 @@ export default function Contact() {
             </button>
             
             {error && (
-              <p className="text-center font-mono text-[10px] text-secondary mt-2 uppercase tracking-widest animate-pulse">
+              <p className="text-center font-mono text-[10px] text-primary mt-2 uppercase tracking-widest animate-pulse">
                 Error: Connection_Failed. Please try again.
               </p>
             )}
@@ -182,13 +182,13 @@ export default function Contact() {
                 className="absolute inset-0 flex items-center justify-center bg-background/90 rounded-2xl z-10"
               >
                 <div className="text-center space-y-4">
-                  <div className="mx-auto w-16 h-16 rounded-full bg-highlight flex items-center justify-center text-background shadow-yellow animate-bounce">
+                  <div className="mx-auto w-16 h-16 rounded-full bg-primary flex items-center justify-center text-background animate-bounce">
                     <Trophy size={32} />
                   </div>
-                  <h3 className="font-space font-bold text-2xl text-highlight uppercase tracking-wider">
+                  <h3 className="font-space font-bold text-2xl text-primary uppercase tracking-wider">
                     Message Sent!
                   </h3>
-                  <p className="text-starlight font-mono text-sm">Achievement Unlocked: Communication Master</p>
+                  <p className="text-textSecondary font-mono text-sm">Achievement Unlocked: Communication Master</p>
                   <button 
                     onClick={() => setIsSent(false)}
                     className="text-primary text-xs uppercase font-bold tracking-widest hover:underline"

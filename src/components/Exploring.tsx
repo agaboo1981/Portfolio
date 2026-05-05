@@ -24,7 +24,7 @@ const EXPLORING_ITEMS = [
     description: "Creating intelligent assistants that adapt to individual student needs.",
     icon: GraduationCap,
     status: "EXPERIMENTING",
-    color: "highlight"
+    color: "secondary"
   },
   {
     title: "Multi-provider Fintech APIs",
@@ -54,27 +54,14 @@ const COLOR_MAP = {
     border: "border-primary/20",
     text: "text-primary",
     bar: "bg-primary/40",
-    glow: "bg-primary/5",
-    glowHover: "group-hover:bg-primary/10",
     borderHover: "hover:border-primary/50"
   },
   secondary: {
-    bg: "bg-secondary/10",
-    border: "border-secondary/20",
-    text: "text-secondary",
-    bar: "bg-secondary/40",
-    glow: "bg-secondary/5",
-    glowHover: "group-hover:bg-secondary/10",
-    borderHover: "hover:border-secondary/50"
-  },
-  highlight: {
-    bg: "bg-highlight/10",
-    border: "border-highlight/20",
-    text: "text-highlight",
-    bar: "bg-highlight/40",
-    glow: "bg-highlight/5",
-    glowHover: "group-hover:bg-highlight/10",
-    borderHover: "hover:border-highlight/50"
+    bg: "bg-textSecondary/10",
+    border: "border-textSecondary/20",
+    text: "text-textSecondary",
+    bar: "bg-textSecondary/40",
+    borderHover: "hover:border-textSecondary/50"
   }
 };
 
@@ -87,12 +74,12 @@ export default function Exploring() {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="font-space font-bold text-4xl text-offwhite tracking-tight mb-4 uppercase">
-          SKILL_<span className="text-secondary">TREE</span>
+        <h2 className="font-space font-bold text-4xl text-textMain tracking-tight mb-4 uppercase">
+          SKILL_<span className="text-textSecondary">TREE</span>
         </h2>
-        <p className="text-starlight font-inter tracking-wide uppercase text-xs flex items-center justify-center gap-2">
+        <p className="text-textSecondary font-inter tracking-wide uppercase text-xs flex items-center justify-center gap-2">
           <span>Scanning for new technologies...</span>
-          <span className="font-mono text-secondary"><Bitrate /></span>
+          <span className="font-mono text-textSecondary"><Bitrate /></span>
         </p>
       </motion.div>
 
@@ -119,17 +106,17 @@ export default function Exploring() {
                 </span>
               </div>
 
-              <h3 className="font-space font-bold text-offwhite text-lg mb-3 leading-tight group-hover:text-secondary transition-colors">
+              <h3 className="font-space font-bold text-textMain text-lg mb-3 leading-tight group-hover:text-textSecondary transition-colors">
                 {item.title}
               </h3>
               
-              <p className="text-starlight text-sm font-inter leading-relaxed mb-6 flex-grow">
+              <p className="text-textSecondary text-sm font-inter leading-relaxed mb-6 flex-grow">
                 {item.description}
               </p>
 
               {/* Syncing Progress Bar */}
               <div className="space-y-2">
-                <div className="flex justify-between items-center text-[8px] font-mono text-starlight/50 uppercase tracking-tighter">
+                <div className="flex justify-between items-center text-[8px] font-mono text-textSecondary/50 uppercase tracking-tighter">
                   <span>Syncing_Data...</span>
                   <span>{25 + (idx * 5)}%</span>
                 </div>
@@ -143,9 +130,6 @@ export default function Exploring() {
                   />
                 </div>
               </div>
-
-              {/* Decorative background element */}
-              <div className={`absolute -bottom-4 -right-4 w-16 h-16 ${colors.glow} rounded-full blur-2xl ${colors.glowHover} transition-all`} />
             </motion.div>
           );
         })}

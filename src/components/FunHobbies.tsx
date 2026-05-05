@@ -11,7 +11,7 @@ const hobbies = [
     title: "Gaming",
     description: "Conquering high-stakes raids in competitive RPGs.",
     icon: Gamepad2,
-    color: "text-secondary",
+    color: "text-textSecondary",
   },
   {
     title: "AI Tinkering",
@@ -23,13 +23,13 @@ const hobbies = [
     title: "Movie Binge Sessions",
     description: "Watching classic films and discovering hidden gems.",
     icon: Film,
-    color: "text-highlight",
+    color: "text-primary",
   },
   {
     title: "Structural Analysis",
     description: "Analysis of structure in my field of study which is civil engineering",
     icon: HardHat,
-    color: "text-highlight",
+    color: "text-primary",
   },
 ];
 
@@ -53,12 +53,12 @@ export default function FunHobbies() {
         viewport={{ once: true }}
         className="mb-12"
       >
-        <div className="flex items-center gap-2 mb-2 font-mono text-secondary text-sm uppercase tracking-widest">
-          <span className="w-8 h-[1px] bg-secondary"></span>
+        <div className="flex items-center gap-2 mb-2 font-mono text-textSecondary text-sm uppercase tracking-widest">
+          <span className="w-8 h-[1px] bg-textSecondary"></span>
           Side Quests
         </div>
-        <h2 className="text-4xl lg:text-5xl font-space font-bold text-offwhite">
-          Beyond the <span className="text-secondary">Code</span>
+        <h2 className="text-4xl lg:text-5xl font-space font-bold text-textMain">
+          Beyond the <span className="text-textSecondary">Code</span>
         </h2>
       </motion.div>
 
@@ -76,8 +76,8 @@ export default function FunHobbies() {
         ))}
       </div>
 
-      <p className="mt-8 text-center font-mono text-starlight/40 text-xs flex items-center justify-center gap-2">
-        <Keyboard size={12} className="text-secondary/50" />
+      <p className="mt-8 text-center font-mono text-textSecondary/40 text-xs flex items-center justify-center gap-2">
+        <Keyboard size={12} className="text-textSecondary/50" />
         <span>[TIP: TYPE</span>
         <kbd className="px-1.5 py-0.5 rounded border border-white/10 bg-white/5 text-[10px]">P</kbd>
         <kbd className="px-1.5 py-0.5 rounded border border-white/10 bg-white/5 text-[10px]">L</kbd>
@@ -93,16 +93,16 @@ export default function FunHobbies() {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
-            className="fixed bottom-10 right-10 z-50 flex items-center gap-4 rounded-lg border-2 border-highlight bg-background p-4 shadow-yellow"
+            className="fixed bottom-10 right-10 z-50 flex items-center gap-4 rounded-lg border-2 border-primary bg-background p-4"
           >
-            <div className="rounded-full bg-highlight p-2 text-background">
+            <div className="rounded-full bg-primary p-2 text-background">
               <Trophy size={24} />
             </div>
             <div>
-              <p className="font-space font-bold text-highlight uppercase tracking-wider">
+              <p className="font-space font-bold text-primary uppercase tracking-wider">
                 Achievement Unlocked
               </p>
-              <p className="text-sm text-offwhite">The Secret Explorer</p>
+              <p className="text-sm text-textMain">The Secret Explorer</p>
             </div>
           </motion.div>
         )}

@@ -80,7 +80,7 @@ export default function Projects() {
           <span className="w-8 h-[1px] bg-primary"></span>
           Quest Log
         </div>
-        <h2 className="text-4xl lg:text-5xl font-space font-bold text-offwhite">
+        <h2 className="text-4xl lg:text-5xl font-space font-bold text-textMain">
           Active <span className="text-primary">Projects</span>
         </h2>
       </motion.div>
