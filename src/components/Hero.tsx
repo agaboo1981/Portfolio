@@ -158,6 +158,7 @@ function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
 function Avatar() {
   const [hasError, setHasError] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  const avatarSrc = "/assets/profile.png?v=20260512";
 
   return (
     <div className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 shrink-0 mb-8 md:mb-0">
@@ -184,7 +185,7 @@ function Avatar() {
           {!hasError ? (
             <>
               <Image
-                src="/assets/profile.png"
+                src={avatarSrc}
                 alt="Joshua Adesina"
                 fill
                 className="object-cover"
