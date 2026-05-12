@@ -184,7 +184,7 @@ function Avatar() {
           {!hasError ? (
             <>
               <Image
-                src="/assets/avatar.png"
+                src="/assets/profile.png"
                 alt="Joshua Adesina"
                 fill
                 className="object-cover"
