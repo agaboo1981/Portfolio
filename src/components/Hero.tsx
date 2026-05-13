@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import { User } from "lucide-react";
 import { useState, useEffect } from "react";
-
-// Using native <img> for testing asset load; revert to next/image after verification
+import Image from "next/image";
 
 function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
   const [stage, setStage] = useState<"entering" | "beaming" | "chatting" | "exiting" | "gone">("entering");
@@ -184,10 +183,11 @@ function Avatar() {
         <div className="relative w-full h-full rounded-full border-2 border-primary/50 overflow-hidden hud-glass flex items-center justify-center">
           {!hasError ? (
             <>
-              <img
+              <Image
                 src={avatarSrc}
                 alt="Joshua Adesina"
-                className="object-cover w-full h-full"
+                className="object-cover"
+                fill
                 onError={() => setHasError(true)}
               />
             </>
