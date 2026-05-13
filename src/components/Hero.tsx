@@ -159,6 +159,7 @@ function Avatar() {
   const [revealed, setRevealed] = useState(false);
   const avatarSrc = "/assets/profile.png?v=20260512";
 
+
   return (
     <div className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 shrink-0 mb-8 md:mb-0">
       {/* Interaction Component */}
@@ -182,15 +183,13 @@ function Avatar() {
 
         <div className="relative w-full h-full rounded-full border-2 border-primary/50 overflow-hidden hud-glass flex items-center justify-center">
           {!hasError ? (
-            <>
-              <Image
-                src={avatarSrc}
-                alt="Joshua Adesina"
-                className="object-cover"
-                fill
-                onError={() => setHasError(true)}
-              />
-            </>
+            <Image
+              src={avatarSrc}
+              alt="Joshua Adesina"
+              fill
+              className="object-cover"
+              onError={() => setHasError(true)}
+            />
           ) : (
             <div className="flex flex-col items-center justify-center text-primary/40">
               <User size={80} strokeWidth={1} />
