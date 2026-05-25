@@ -157,7 +157,7 @@ function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
 function Avatar() {
   const [hasError, setHasError] = useState(false);
   const [revealed, setRevealed] = useState(false);
-  const avatarSrc = "/assets/profile.png?v=20260512";
+  const avatarSrc = "/assets/joshua.jpg?v=20260512";
 
 
   return (
