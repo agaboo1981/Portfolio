@@ -187,7 +187,7 @@ function Avatar() {
               src={avatarSrc}
               alt="Joshua Adesina"
               fill
-              className="object-cover"
+              className="object-cover object-[center_45%]"
               onError={() => setHasError(true)}
             />
           ) : (
@@ -325,4 +325,3 @@ function Typewriter({ text, delay }: { text: string; delay: number }) {
     </div>
   );
 }
-
