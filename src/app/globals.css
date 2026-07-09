@@ -60,4 +60,7 @@ body {
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  .text-textSecondary {
+    color: var(--foreground);
+  }
 }
