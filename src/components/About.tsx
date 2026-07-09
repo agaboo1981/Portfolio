@@ -13,6 +13,7 @@ const FAQ = [
   { q: "What's his tech stack?", a: "His primary loadout includes React/Next.js for the Front-end, Node/Prisma for the Back-end, and a specialized AI Toolkit (Gemini CLI) for rapid development." },
   { q: "Any special abilities?", a: "Passive: 'Structural Logic' (prevents spaghetti code). Active: 'Rapid Prototyping' (builds MVPs at 2x speed) and 'AI Orchestration' (manages multi-agent systems)." },
   { q: "Tell me about the Predictor!", a: "That's his 'Boss Fight' victory! He lead-architected a machine learning model to predict corporate collapse, achieving a 92% accuracy rating using Logistic Regression and Streamlit." },
+  { q: "What is your secret achievement?", a: "Joshua was employed to work at a stealth startup that is developing an AI-driven edtech study platform. He was the lead architect for the platform's backend and AI orchestration, which is currently in stealth mode." },
 ];
 
 function Message({ m }: { m: { id: number; sender: string; text: string } }) {
@@ -85,11 +86,11 @@ export default function About() {
             Status: Main_Character_Unlocked
           </div>
           <h2 className="font-space font-bold text-4xl text-textMain tracking-tight">
-            CHARACTER <span className="text-primary">BIO</span>
+            JOSHUA <span className="text-primary">BIO</span>
           </h2>
           <div className="space-y-4 font-inter text-textSecondary text-lg leading-relaxed">
             <p>
-              By day, I architect robust digital infrastructures. By night, I explore the frontiers of <span className="text-textSecondary font-bold">AI multi-agent systems</span> and high-performance web experiences.
+              By day, I architect robust digital infrastructures and build the next gen web and mobile applications. By night, I explore the frontiers of <span className="text-textSecondary font-bold">AI multi-agent systems</span> and high-performance web experiences.
             </p>
             <p>
               My background in structural engineering gives me a unique lens: I don&apos;t just write code; I build <span className="text-primary italic">fault-tolerant systems</span> that scale. Every line of code is a structural beam, every API a strategic bridge.

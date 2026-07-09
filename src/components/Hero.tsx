@@ -252,7 +252,7 @@ export default function Hero() {
             className="font-inter text-lg md:text-xl lg:text-2xl text-textSecondary max-w-2xl mx-auto md:mx-0 mb-8 leading-relaxed"
           >
             Software developer dedicated to building high-performance web applications and interactive experiences. 
-            I specialize in crafting a no spaghetti issues clean code with <span className="text-textSecondary italic">JavaScript,TypeScript And Python</span>, 
+            I specialize in crafting a no spaghetti issues clean code with <span className="text-highlight">JavaScript,TypeScript And Python</span>, 
             leveraging modern AI workflows and human minds to solve complex problems.
           </motion.h2>
 
@@ -263,7 +263,7 @@ export default function Hero() {
             className="flex flex-wrap gap-4 justify-center md:justify-start"
           >
             <a href="#projects" className="btn-primary">
-              Start Quest
+              View Projects
             </a>
             <a href="#contact" className="btn-secondary">
               Contact Me

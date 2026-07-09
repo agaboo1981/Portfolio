@@ -40,7 +40,6 @@ body {
   .terminal-input {
     @apply bg-background/80 border border-primary/20 text-primary font-mono px-4 py-2 rounded-md outline-none transition-all;
   }
-  
   .terminal-input:focus {
     @apply border-primary;
   }
@@ -62,5 +61,10 @@ body {
   }
   .text-textSecondary {
     color: var(--foreground);
+  }
+
+  .text-highlight {
+    font-style: italic;
+    color: black;
   }
 }
