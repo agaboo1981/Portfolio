@@ -95,11 +95,11 @@ export default function About() {
               My background in structural engineering gives me a unique lens: I don&apos;t just write code; I build <span className="text-primary italic">fault-tolerant systems</span> that scale. Every line of code is a structural beam, every API a strategic bridge.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-4">
-              <div className="bg-white/5 p-3 rounded border border-white/10 font-mono">
+              <div className="bg-primary/5 p-3 rounded border border-primary/15 font-mono">
                 <div className="text-[10px] text-primary uppercase">STR (Code Integrity): 90/100</div>
                 <div className="h-1 bg-primary/20 mt-1"><div className="w-[90%] h-full bg-primary" /></div>
               </div>
-              <div className="bg-white/5 p-3 rounded border border-white/10 font-mono">
+              <div className="bg-primary/5 p-3 rounded border border-primary/15 font-mono">
                 <div className="text-[10px] text-textSecondary uppercase">INT (Logic Flow): 95/100</div>
                 <div className="h-1 bg-textSecondary/20 mt-1"><div className="w-[95%] h-full bg-textSecondary" /></div>
               </div>

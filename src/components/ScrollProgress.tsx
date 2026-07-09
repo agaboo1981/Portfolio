@@ -11,7 +11,7 @@ export default function ScrollProgress() {
   });
 
   return (
-    <div className="relative w-full h-[2px] bg-white/5 rounded-full overflow-hidden">
+    <div className="relative w-full h-[2px] bg-primary/10 rounded-full overflow-hidden">
       <motion.div
         className="h-full bg-primary origin-left relative"
         style={{ scaleX }}

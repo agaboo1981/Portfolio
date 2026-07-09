@@ -25,7 +25,7 @@ export default function QuickContact() {
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto overflow-hidden">
             <a 
               href="mailto:giganticjosha@gmail.com"
-              className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-primary/10 transition-all group/link w-full sm:w-auto"
+              className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 rounded-xl bg-primary/5 border border-primary/15 hover:border-primary/50 hover:bg-primary/10 transition-all group/link w-full sm:w-auto"
             >
               <Mail size={18} className="text-primary shrink-0" />
               <div className="flex flex-col items-start overflow-hidden">
@@ -38,7 +38,7 @@ export default function QuickContact() {
               href="https://x.com/Agaboo07"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-primary/10 transition-all group/link w-full sm:w-auto"
+              className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 rounded-xl bg-primary/5 border border-primary/15 hover:border-primary/50 hover:bg-primary/10 transition-all group/link w-full sm:w-auto"
             >
               <Twitter size={18} className="text-primary shrink-0" />
               <div className="flex flex-col items-start overflow-hidden">

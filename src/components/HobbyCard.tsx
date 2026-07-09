@@ -25,8 +25,8 @@ export default function HobbyCard({ title, description, icon: Icon, color }: Hob
       </div>
       
       {/* Decorative Corner */}
-      <div className="absolute top-0 right-0 h-4 w-4 border-t border-r border-white/10 group-hover:border-primary/50" />
-      <div className="absolute bottom-0 left-0 h-4 w-4 border-b border-l border-white/10 group-hover:border-primary/50" />
+      <div className="absolute top-0 right-0 h-4 w-4 border-t border-r border-primary/15 group-hover:border-primary/50" />
+      <div className="absolute bottom-0 left-0 h-4 w-4 border-b border-l border-primary/15 group-hover:border-primary/50" />
     </motion.div>
   );
 }

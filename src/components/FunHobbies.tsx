@@ -79,10 +79,10 @@ export default function FunHobbies() {
       <p className="mt-8 text-center font-mono text-textSecondary/40 text-xs flex items-center justify-center gap-2">
         <Keyboard size={12} className="text-textSecondary/50" />
         <span>[TIP: TYPE</span>
-        <kbd className="px-1.5 py-0.5 rounded border border-white/10 bg-white/5 text-[10px]">P</kbd>
-        <kbd className="px-1.5 py-0.5 rounded border border-white/10 bg-white/5 text-[10px]">L</kbd>
-        <kbd className="px-1.5 py-0.5 rounded border border-white/10 bg-white/5 text-[10px]">A</kbd>
-        <kbd className="px-1.5 py-0.5 rounded border border-white/10 bg-white/5 text-[10px]">Y</kbd>
+        <kbd className="px-1.5 py-0.5 rounded border border-primary/15 bg-primary/5 text-[10px]">P</kbd>
+        <kbd className="px-1.5 py-0.5 rounded border border-primary/15 bg-primary/5 text-[10px]">L</kbd>
+        <kbd className="px-1.5 py-0.5 rounded border border-primary/15 bg-primary/5 text-[10px]">A</kbd>
+        <kbd className="px-1.5 py-0.5 rounded border border-primary/15 bg-primary/5 text-[10px]">Y</kbd>
         <span>TO UNLOCK THE SECRET LEVEL]</span>
       </p>
 
