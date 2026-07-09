@@ -94,14 +94,14 @@ export default function Exploring() {
               transition={{ delay: idx * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className={`hud-glass p-6 rounded-2xl border border-white/5 ${colors.borderHover} transition-all group relative overflow-hidden flex flex-col h-full`}
+              className={`hud-glass p-6 rounded-2xl border border-primary/10 ${colors.borderHover} transition-all group relative overflow-hidden flex flex-col h-full`}
             >
               {/* Status Badge */}
               <div className="flex justify-between items-start mb-6">
                 <div className={`p-2 rounded-lg ${colors.bg} border ${colors.border} ${colors.text}`}>
                   <item.icon size={20} />
                 </div>
-                <span className={`font-mono text-[8px] px-2 py-0.5 rounded border border-white/10 ${colors.text}/80 tracking-tighter uppercase`}>
+                <span className={`font-mono text-[8px] px-2 py-0.5 rounded border border-primary/15 ${colors.text}/80 tracking-tighter uppercase`}>
                   {item.status}
                 </span>
               </div>
@@ -120,7 +120,7 @@ export default function Exploring() {
                   <span>Syncing_Data...</span>
                   <span>{25 + (idx * 5)}%</span>
                 </div>
-                <div className="h-1 bg-background/50 rounded-full overflow-hidden border border-white/5">
+                <div className="h-1 bg-background/50 rounded-full overflow-hidden border border-primary/10">
                   <motion.div 
                     initial={{ width: 0 }}
                     whileInView={{ width: `${25 + (idx * 5)}%` }}

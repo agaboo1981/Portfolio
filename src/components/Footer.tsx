@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-white/5 bg-background px-6 py-12 lg:px-20">
+    <footer className="relative border-t border-primary/10 bg-background px-6 py-12 lg:px-20">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         {/* Branding & Witty Remark */}
         <div className="text-center md:text-left">
@@ -55,7 +55,7 @@ export default function Footer() {
           onClick={scrollToTop}
           className="group flex flex-col items-center gap-2 font-mono text-[10px] text-textSecondary uppercase tracking-widest transition-colors hover:text-primary"
         >
-          <div className="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center transition-all group-hover:border-primary">
+          <div className="h-10 w-10 rounded-full border border-primary/15 flex items-center justify-center transition-all group-hover:border-primary">
             <ChevronUp size={20} />
           </div>
           <span>Return to Start</span>

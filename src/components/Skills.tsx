@@ -98,7 +98,7 @@ export default function Skills() {
                     </div>
                   </div>
                   
-                  <div className="h-3 bg-background/80 rounded-full overflow-hidden border border-white/5 relative">
+                  <div className="h-3 bg-background/80 rounded-full overflow-hidden border border-primary/10 relative">
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}

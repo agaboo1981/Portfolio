@@ -96,7 +96,7 @@ function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
             initial={{ scale: 0, opacity: 0, y: 10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0, opacity: 0 }}
-            className="absolute -top-10 sm:-top-14 left-1/2 -translate-x-1/2 bg-primary/90 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-mono text-[8px] sm:text-[10px] border border-primary/50 whitespace-nowrap backdrop-blur-sm"
+            className="absolute -top-10 sm:-top-14 left-1/2 -translate-x-1/2 bg-primary/90 text-background px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-mono text-[8px] sm:text-[10px] border border-primary/50 whitespace-nowrap backdrop-blur-sm"
           >
             <span className="text-textSecondary mr-2">{">"}</span>
             PLAYER_1 IDENTIFIED
