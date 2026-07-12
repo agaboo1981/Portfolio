@@ -6,61 +6,85 @@ import ProjectCard from "./ProjectCard";
 const projects = [
   {
     title: "Collapse Risk Predictor",
-    description: "A machine learning project that predicts corporate financial distress with strong model performance and clear risk outputs.",
+    description: "A machine learning pipeline and interactive application that predicts corporate financial distress using ensemble model classification and real-time risk indicators.",
     image: "/projects/ai-sentry.svg",
     tags: ["Python", "Machine Learning", "Scikit-Learn", "Streamlit"],
-    difficulty: "Boss Fight" as const,
-    loot: ["92% Accuracy Rating", "Real-time Risk Assessment", "Production-ready App"],
+    category: "AI & Data Science",
+    metrics: [
+      "92% classification recall on distressed companies",
+      "Real-time corporate risk matrix computation",
+      "Fully interactive analytical dashboard",
+    ],
     githubUrl: "https://github.com/agaboo1981/CollapeRiskModel",
     liveUrl: "https://group-5-fo6xokxhv776ojjceed5od.streamlit.app",
   },
   {
     title: "BlockCore",
-    description: "A modern blockchain project focused on transparent, secure, and user-friendly decentralized interactions.",
+    description: "A secure web3 platform designed to facilitate transparent, secure, and user-friendly decentralized smart contract interactions.",
     image: "/projects/blockchain.svg",
     tags: ["Solidity", "Web3", "Next.js", "Vercel"],
-    difficulty: "Boss Fight" as const,
-    loot: ["Smart Contract Workflow", "Decentralized Architecture", "Clean UI"],
+    category: "Blockchain / Web3",
+    metrics: [
+      "Secure gas-optimized Solidity smart contracts",
+      "Automated web3 wallet provider connection client",
+      "Real-time event listener state machine",
+    ],
     githubUrl: "https://github.com/agaboo1981/blockcore",
     liveUrl: "https://blockcore.vercel.app/",
   },
   {
     title: "Vogue",
-    description: "A stylish, conversion-focused fashion-themed web experience with polished visuals and responsive interactions.",
+    description: "A conversion-optimized, responsive fashion-themed web experience featuring sub-second transitions and structured content organization.",
     image: "/projects/ecommerce.svg",
     tags: ["Next.js", "Tailwind", "Responsive UI", "Vercel"],
-    difficulty: "Main Quest" as const,
-    loot: ["Elegant Product Storytelling", "Mobile-first Layout", "Fast Navigation"],
+    category: "E-Commerce",
+    metrics: [
+      "Fully responsive and mobile-optimized layouts",
+      "Fast page loads under 0.8s on 3G connections",
+      "Integrated analytics and search indexing (SEO)",
+    ],
     githubUrl: "https://github.com/agaboo1981/vogue",
     liveUrl: "https://vogue-teal.vercel.app/",
   },
   {
     title: "Nexus",
-    description: "A modern fintech landing page showcasing services, trust signals, and clear calls-to-action for users.",
+    description: "A modern fintech application interface built to streamline financial discovery, trust signals, and user interactive calculations.",
     image: "/projects/fintech.svg",
     tags: ["Next.js", "Fintech UI", "Tailwind", "Vercel"],
-    difficulty: "Boss Fight" as const,
-    loot: ["Professional Brand Presence", "SEO-friendly Structure", "Responsive Sections"],
+    category: "Fintech Platform",
+    metrics: [
+      "Dynamic interactive financial yield calculators",
+      "Optimized Core Web Vitals score (98+ Performance)",
+      "Strict semantic HTML and metadata setup (SEO)",
+    ],
     githubUrl: "https://github.com/agaboo1981/nexus",
     liveUrl: "https://nexus-nu-navy.vercel.app/",
   },
   {
     title: "Nexus Conflict",
-    description: "A Landing page for a fictional game, showcasing dynamic visuals, engaging content, and clear calls-to-action to immerse visitors in the gaming world.",
+    description: "An immersive entertainment landing page designed to showcase high-fidelity visuals, scroll-driven interactions, and product messaging.",
     image: "/projects/pixel-quest.svg",
     tags: ["React", "Animation", "Game UI", "Vercel"],
-    difficulty: "Main Quest" as const,
-    loot: ["High-energy Visual Design", "Interactive Experience", "Responsive Performance"],
+    category: "Web Experience",
+    metrics: [
+      "Fluid, GPU-accelerated transition animations",
+      "Structured content flow for peak marketing conversion",
+      "Comprehensive responsive touch-device scaling",
+    ],
     githubUrl: "https://github.com/agaboo1981/gaming",
     liveUrl: "https://gaming-ecru-phi.vercel.app/",
   },
   {
     title: "La Dolce Vita",
-    description: "A modern e-commerce experience designed for smooth browsing, clear product discovery, and polished checkout flow.",
+    description: "A high-performance modern digital store experience centered around rapid product catalog traversal and clean product showcase logic.",
     image: "/projects/ecommerce.svg",
     tags: ["Next.js", "E-commerce", "Tailwind", "Vercel"],
-    difficulty: "Main Quest" as const,
-    loot: ["Conversion-focused UX", "Mobile Optimization", "Clean Product Pages"],
+    category: "E-Commerce",
+    metrics: [
+      "Polished category traversal and product display",
+      "Optimized image loading pipelines (Next/Image)",
+      "Accessible design supporting screen readers",
+    ],
     githubUrl: "https://github.com/agaboo1981/ladolcevita",
     liveUrl: "https://ladolcevita-seven.vercel.app/",
   },
@@ -78,32 +102,32 @@ export default function Projects() {
       >
         <div className="flex items-center gap-2 mb-2 font-mono text-primary text-sm uppercase tracking-widest">
           <span className="w-8 h-[1px] bg-primary"></span>
-          Quest Log
+          Showcase
         </div>
-        <h2 className="text-4xl lg:text-5xl font-space font-bold text-textMain">
+        <h2 className="text-4xl lg:text-5xl font-space font-bold text-slate-900">
           Active <span className="text-primary">Projects</span>
         </h2>
       </motion.div>
 
       {/* Bento Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
-        <div className="md:col-span-2 lg:col-span-12">
-          <ProjectCard {...projects[0]} />
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-12">
+          <ProjectCard {...projects[0]} layout="horizontal" />
         </div>
         <div className="lg:col-span-7">
-          <ProjectCard {...projects[1]} />
+          <ProjectCard {...projects[1]} layout="vertical" />
         </div>
         <div className="lg:col-span-5">
-          <ProjectCard {...projects[2]} />
+          <ProjectCard {...projects[2]} layout="vertical" />
         </div>
         <div className="lg:col-span-5">
-          <ProjectCard {...projects[3]} />
+          <ProjectCard {...projects[3]} layout="vertical" />
         </div>
         <div className="lg:col-span-7">
-          <ProjectCard {...projects[4]} />
+          <ProjectCard {...projects[4]} layout="vertical" />
         </div>
-        <div className="md:col-span-2 lg:col-span-12">
-          <ProjectCard {...projects[5]} />
+        <div className="lg:col-span-12">
+          <ProjectCard {...projects[5]} layout="horizontal" />
         </div>
       </div>
     </section>
