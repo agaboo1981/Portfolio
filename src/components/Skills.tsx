@@ -60,13 +60,7 @@ const CursorIcon = (props: React.ComponentProps<"svg">) => (
   </svg>
 );
 
-const BullMQIcon = (props: React.ComponentProps<"svg">) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <path d="M12 14c-2 0-4-1.5-4-3.5s2-3.5 4-3.5 4 1.5 4 3.5-2 3.5-4 3.5z" />
-    <path d="M12 7c-4 0-7-2-7-5M12 7c4 0 7-2 7-5" />
-    <path d="M8 12.5v2.5c0 2.2 1.8 4 4 4s4-1.8 4-4v-2.5" />
-  </svg>
-);
+
 
 const ScaleAIIcon = (props: React.ComponentProps<"svg">) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -89,9 +83,11 @@ const AfterEffectsIcon = (props: React.ComponentProps<"svg">) => (
   </svg>
 );
 
+type IconProps = React.SVGProps<SVGSVGElement> & { size?: number | string; className?: string };
+
 interface Skill {
   name: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<IconProps>;
   color: string;
 }
 

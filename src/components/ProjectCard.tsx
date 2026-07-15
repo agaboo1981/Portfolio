@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Check } from "lucide-react";
+import Image from "next/image";
 
 interface ProjectProps {
   title: string;
@@ -71,9 +72,11 @@ export default function ProjectCard({
 
         {/* Visual Content Display */}
         <div className="flex-1 bg-slate-900 flex items-center justify-center p-8 min-h-[220px] aspect-video relative group overflow-hidden">
-          <img
+          <Image
             src={image}
             alt={`${title} Preview`}
+            width={480}
+            height={192}
             className="w-4/5 max-h-48 object-contain transition-transform duration-500 group-hover:scale-105"
           />
         </div>
