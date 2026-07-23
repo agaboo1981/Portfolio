@@ -7,7 +7,7 @@ const projects = [
   {
     title: "Collapse Risk Predictor",
     description: "A machine learning pipeline and interactive application that predicts corporate financial distress using ensemble model classification and real-time risk indicators.",
-    image: "/projects/ai-sentry.svg",
+    image: "/projects/collapse-risk-predictor.png",
     tags: ["Python", "Machine Learning", "Scikit-Learn", "Streamlit"],
     category: "AI & Data Science",
     metrics: [
@@ -35,7 +35,7 @@ const projects = [
   {
     title: "Vogue",
     description: "A conversion-optimized, responsive fashion-themed web experience featuring sub-second transitions and structured content organization.",
-    image: "/projects/ecommerce.svg",
+    image: "/projects/vogue.png",
     tags: ["Next.js", "Tailwind", "Responsive UI", "Vercel"],
     category: "E-Commerce",
     metrics: [
