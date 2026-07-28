@@ -49,7 +49,7 @@ const projects = [
   {
     title: "Nexus",
     description: "A modern fintech application interface built to streamline financial discovery, trust signals, and user interactive calculations.",
-    image: "/projects/fintech.svg",
+    image: "/projects/nexus.png",
     tags: ["Next.js", "Fintech UI", "Tailwind", "Vercel"],
     category: "Fintech Platform",
     metrics: [
@@ -63,7 +63,7 @@ const projects = [
   {
     title: "Nexus Conflict",
     description: "An immersive entertainment landing page designed to showcase high-fidelity visuals, scroll-driven interactions, and product messaging.",
-    image: "/projects/pixel-quest.svg",
+    image: "/projects/nexus-conflict.png",
     tags: ["React", "Animation", "Game UI", "Vercel"],
     category: "Web Experience",
     metrics: [
@@ -77,7 +77,7 @@ const projects = [
   {
     title: "La Dolce Vita",
     description: "A high-performance modern digital store experience centered around rapid product catalog traversal and clean product showcase logic.",
-    image: "/projects/ecommerce.svg",
+    image: "/projects/la-dolce-vita.png",
     tags: ["Next.js", "E-commerce", "Tailwind", "Vercel"],
     category: "E-Commerce",
     metrics: [
@@ -92,13 +92,13 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 pt-32 lg:pt-20 px-6 lg:px-20 max-w-7xl mx-auto">
+    <section id="projects" className="py-20 pt-32 lg:pt-32 px-6 lg:px-20 max-w-[1400px] mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-12"
+        className="mb-16 lg:mb-24"
       >
         <div className="flex items-center gap-2 mb-2 font-mono text-primary text-sm uppercase tracking-widest">
           <span className="w-8 h-[1px] bg-primary"></span>
@@ -109,26 +109,17 @@ export default function Projects() {
         </h2>
       </motion.div>
 
-      {/* Bento Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <div className="lg:col-span-12">
-          <ProjectCard {...projects[0]} layout="horizontal" />
-        </div>
-        <div className="lg:col-span-7">
-          <ProjectCard {...projects[1]} layout="vertical" />
-        </div>
-        <div className="lg:col-span-5">
-          <ProjectCard {...projects[2]} layout="vertical" />
-        </div>
-        <div className="lg:col-span-5">
-          <ProjectCard {...projects[3]} layout="vertical" />
-        </div>
-        <div className="lg:col-span-7">
-          <ProjectCard {...projects[4]} layout="vertical" />
-        </div>
-        <div className="lg:col-span-12">
-          <ProjectCard {...projects[5]} layout="horizontal" />
-        </div>
+      {/* Sticky Scroll Layout */}
+      <div className="relative space-y-16 lg:space-y-32 pb-32">
+        {projects.map((project, index) => (
+          <div
+            key={project.title}
+            className="sticky top-20 lg:top-28 w-full"
+            style={{ zIndex: index + 1 }}
+          >
+            <ProjectCard {...project} index={index} />
+          </div>
+        ))}
       </div>
     </section>
   );

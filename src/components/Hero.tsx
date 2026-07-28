@@ -157,7 +157,7 @@ function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
 function Avatar() {
   const [hasError, setHasError] = useState(false);
   const [revealed, setRevealed] = useState(false);
-  const avatarSrc = "/assets/joshua.jpg?v=20260512";
+  const avatarSrc = "/assets/joshua.jpg";
 
 
   return (
@@ -187,6 +187,7 @@ function Avatar() {
               src={avatarSrc}
               alt="Joshua Adesina"
               fill
+              sizes="(max-width: 640px) 128px, (max-width: 768px) 192px, 256px"
               className="object-cover object-[center_45%]"
               onError={() => setHasError(true)}
             />
