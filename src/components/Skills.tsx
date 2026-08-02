@@ -234,10 +234,10 @@ export default function Skills() {
         className="text-center mb-20"
       >
         <h2 className="font-space font-bold text-4xl text-textMain tracking-tight mb-4 uppercase">
-          POWER-<span className="text-primary">UPS</span>
+          TECHNICAL <span className="text-primary">STACK</span>
         </h2>
         <p className="text-textSecondary font-inter text-sm max-w-md mx-auto">
-          Hover over each technology to see its name. Built with official brand ecosystems.
+          Core languages, frameworks, infrastructure, and AI engineering toolkits powering production systems.
         </p>
       </motion.div>
 

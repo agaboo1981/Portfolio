@@ -13,20 +13,33 @@ interface HobbyCardProps {
 export default function HobbyCard({ title, description, icon: Icon, color }: HobbyCardProps) {
   return (
     <motion.div
-      whileHover={{ scale: 1.05, rotate: 2 }}
-      className="group relative flex flex-col items-center gap-4 rounded-xl hud-glass p-6 transition-all hover:border-primary/50 hover:bg-primary/5"
+      whileHover={{ y: -4 }}
+      className="group relative flex flex-col justify-between rounded-2xl bg-white border border-slate-200/80 p-6 sm:p-7 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 h-full"
     >
-      <div className={`rounded-full p-4 transition-transform group-hover:scale-110 ${color}`}>
-        <Icon size={32} />
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <div className={`p-3 rounded-xl bg-slate-100/90 text-slate-800 transition-transform duration-300 group-hover:scale-105 ${color}`}>
+            <Icon size={24} />
+          </div>
+          <span className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+            PERSPECTIVE
+          </span>
+        </div>
+
+        <div>
+          <h3 className="font-space text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">
+            {title}
+          </h3>
+          <p className="mt-2.5 text-xs sm:text-sm text-slate-600 font-inter leading-relaxed">
+            {description}
+          </p>
+        </div>
       </div>
-      <div className="text-center">
-        <h3 className="font-space text-lg font-bold text-textMain">{title}</h3>
-        <p className="mt-2 text-sm text-textSecondary">{description}</p>
+
+      <div className="pt-6 mt-4 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono text-slate-400">
+        <span>DOMAIN // INTEREST</span>
+        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-primary transition-colors" />
       </div>
-      
-      {/* Decorative Corner */}
-      <div className="absolute top-0 right-0 h-4 w-4 border-t border-r border-primary/15 group-hover:border-primary/50" />
-      <div className="absolute bottom-0 left-0 h-4 w-4 border-b border-l border-primary/15 group-hover:border-primary/50" />
     </motion.div>
   );
 }

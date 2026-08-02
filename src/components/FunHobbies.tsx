@@ -1,65 +1,55 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { Gamepad2, Cpu, HardHat, Trophy, Keyboard , Film, } from "lucide-react";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { Gamepad2, Cpu, HardHat, Film } from "lucide-react";
 import HobbyCard from "./HobbyCard";
-import { useKeyboardShortcut } from "@/hooks/useKeyboardShortcut";
 
 const hobbies = [
   {
-    title: "Gaming",
-    description: "Conquering high-stakes raids in competitive RPGs.",
+    title: "Strategic Systems & Gaming",
+    description: "Analyzing game engine state machines, systemic mechanics, and high-level strategy in competitive RPG environments.",
     icon: Gamepad2,
-    color: "text-textSecondary",
+    color: "text-slate-800",
   },
   {
-    title: "AI Tinkering",
-    description: "Training small models for obscure automation tasks.",
+    title: "AI Research & Model Tinkering",
+    description: "Experimenting with local LLM fine-tuning, multi-agent orchestration loops, and small-scale automation scripts.",
     icon: Cpu,
-    color: "text-primary",
+    color: "text-slate-800",
   },
   {
-    title: "Movie Binge Sessions",
-    description: "Watching classic films and discovering hidden gems.",
+    title: "Cinematic Arts & Analysis",
+    description: "Studying visual storytelling, narrative structure, and cinematography across classic and contemporary cinema.",
     icon: Film,
-    color: "text-primary",
+    color: "text-slate-800",
   },
   {
-    title: "Structural Analysis",
-    description: "Analysis of structure in my field of study which is civil engineering",
+    title: "Structural Mechanics & Engineering",
+    description: "Applying load distribution, structural integrity, and computational physics from civil engineering to software architecture.",
     icon: HardHat,
-    color: "text-primary",
+    color: "text-slate-800",
   },
 ];
 
 export default function FunHobbies() {
-  const [showSecret, setShowSecret] = useState(false);
-
-  useKeyboardShortcut("PLAY", () => {
-    setShowSecret(true);
-    window.dispatchEvent(new CustomEvent("secretUnlocked", { detail: true }));
-    setTimeout(() => {
-      setShowSecret(false);
-      window.dispatchEvent(new CustomEvent("secretUnlocked", { detail: false }));
-    }, 3000);
-  });
-
   return (
-    <section id="fun" className="py-20 pt-32 lg:pt-20 px-6 lg:px-20 max-w-7xl mx-auto overflow-hidden">
+    <section id="fun" className="py-20 pt-28 px-6 lg:px-20 max-w-[1400px] mx-auto">
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="mb-12"
+        className="mb-12 lg:mb-16"
       >
-        <div className="flex items-center gap-2 mb-2 font-mono text-textSecondary text-sm uppercase tracking-widest">
-          <span className="w-8 h-[1px] bg-textSecondary"></span>
-          Side Quests
+        <div className="flex items-center gap-2 mb-2 font-mono text-primary text-sm uppercase tracking-widest">
+          <span className="w-8 h-[1px] bg-primary"></span>
+          Personal Pursuits
         </div>
-        <h2 className="text-4xl lg:text-5xl font-space font-bold text-textMain">
-          Beyond the <span className="text-textSecondary">Code</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-space font-bold text-slate-900">
+          Beyond the <span className="text-primary">Code</span>
         </h2>
+        <p className="mt-3 text-slate-600 font-inter text-sm max-w-xl">
+          A collection of creative domains, analytical pursuits, and engineering disciplines that inform my problem-solving approach.
+        </p>
       </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -69,44 +59,12 @@ export default function FunHobbies() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
+            transition={{ delay: index * 0.1, duration: 0.4 }}
           >
             <HobbyCard {...hobby} />
           </motion.div>
         ))}
       </div>
-
-      <p className="mt-8 text-center font-mono text-textSecondary/40 text-xs flex items-center justify-center gap-2">
-        <Keyboard size={12} className="text-textSecondary/50" />
-        <span>[TIP: TYPE</span>
-        <kbd className="px-1.5 py-0.5 rounded border border-primary/15 bg-primary/5 text-[10px]">P</kbd>
-        <kbd className="px-1.5 py-0.5 rounded border border-primary/15 bg-primary/5 text-[10px]">L</kbd>
-        <kbd className="px-1.5 py-0.5 rounded border border-primary/15 bg-primary/5 text-[10px]">A</kbd>
-        <kbd className="px-1.5 py-0.5 rounded border border-primary/15 bg-primary/5 text-[10px]">Y</kbd>
-        <span>TO UNLOCK THE SECRET LEVEL]</span>
-      </p>
-
-      {/* Secret Level Achievement */}
-      <AnimatePresence>
-        {showSecret && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -100, opacity: 0 }}
-            className="fixed bottom-10 right-10 z-50 flex items-center gap-4 rounded-lg border-2 border-primary bg-background p-4"
-          >
-            <div className="rounded-full bg-primary p-2 text-background">
-              <Trophy size={24} />
-            </div>
-            <div>
-              <p className="font-space font-bold text-primary uppercase tracking-wider">
-                Achievement Unlocked
-              </p>
-              <p className="text-sm text-textMain">The Secret Explorer</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

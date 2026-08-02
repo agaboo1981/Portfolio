@@ -9,11 +9,11 @@ const INITIAL_MESSAGES = [
 ];
 
 const FAQ = [
-  { q: "Who is Joshua?", a: "Joshua is a high-level Full-Stack Architect with a background in Civil Engineering. He builds digital systems with the structural integrity of a skyscraper and the fluidity of a high-FPS game engine." },
-  { q: "What's his tech stack?", a: "His primary loadout includes React/Next.js for the Front-end, Node/Prisma for the Back-end, and a specialized AI Toolkit (Gemini CLI) for rapid development." },
-  { q: "Any special abilities?", a: "Passive: 'Structural Logic' (prevents spaghetti code). Active: 'Rapid Prototyping' (builds MVPs at 2x speed) and 'AI Orchestration' (manages multi-agent systems)." },
-  { q: "Tell me about the Predictor!", a: "That's his 'Boss Fight' victory! He lead-architected a machine learning model to predict corporate collapse, achieving a 92% accuracy rating using Logistic Regression and Streamlit." },
-  { q: "What is your secret achievement?", a: "Joshua was employed to work at a stealth startup that is developing an AI-driven edtech study platform. He was the lead architect for the platform's backend and AI orchestration, which is currently in stealth mode." },
+  { q: "Who is Joshua?", a: "Joshua is a Full-Stack Engineer and AI Systems Specialist with a background in Civil Engineering. He builds robust digital infrastructure with structural engineering principles and clean architectural patterns." },
+  { q: "What's his tech stack?", a: "His primary stack includes React/Next.js for Front-end, Node.js/Python for Back-end APIs, PostgreSQL/MongoDB, and specialized AI toolkits (Gemini, LangChain, PyTorch) for intelligent workflows." },
+  { q: "Key Engineering Strengths?", a: "Systems Architecture (building scalable, modular codebases), Production AI Integration, and Rapid Prototyping." },
+  { q: "Tell me about the Predictor!", a: "He architected a machine learning pipeline to predict corporate distress, achieving a 92% recall rate using ensemble classification models, Scikit-Learn, and Streamlit." },
+  { q: "Tell me about his stealth startup role.", a: "Joshua collaborated on a stealth startup developing an AI-driven platform (HIMAI). He engineered the platform's core backend architecture and intelligent AI system orchestration pipelines." },
 ];
 
 function Message({ m }: { m: { id: number; sender: string; text: string } }) {
@@ -83,26 +83,26 @@ export default function About() {
           className="space-y-6"
         >
           <div className="inline-block px-3 py-1 rounded bg-primary/10 border border-primary/20 font-mono text-[10px] text-primary uppercase tracking-widest mb-2">
-            Status: Main_Character_Unlocked
+            PROFILE // ENGINEERING BACKGROUND
           </div>
           <h2 className="font-space font-bold text-4xl text-textMain tracking-tight">
             JOSHUA <span className="text-primary">BIO</span>
           </h2>
           <div className="space-y-4 font-inter text-textSecondary text-lg leading-relaxed">
             <p>
-              By day, I architect robust digital infrastructures and build the next gen web and mobile applications. By night, I explore the frontiers of <span className="text-textSecondary font-bold">AI multi-agent systems</span> and high-performance web experiences.
+              By day, I architect robust digital infrastructures and build modern web and mobile applications. I explore the frontiers of <span className="text-textSecondary font-bold">AI multi-agent systems</span> and high-performance web experiences.
             </p>
             <p>
               My background in structural engineering gives me a unique lens: I don&apos;t just write code; I build <span className="text-primary italic">fault-tolerant systems</span> that scale. Every line of code is a structural beam, every API a strategic bridge.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-4">
               <div className="bg-primary/5 p-3 rounded border border-primary/15 font-mono">
-                <div className="text-[10px] text-primary uppercase">STR (Code Integrity): 90/100</div>
-                <div className="h-1 bg-primary/20 mt-1"><div className="w-[90%] h-full bg-primary" /></div>
+                <div className="text-[10px] text-primary uppercase">Code Reliability: 99.9%</div>
+                <div className="h-1 bg-primary/20 mt-1"><div className="w-[99.9%] h-full bg-primary" /></div>
               </div>
               <div className="bg-primary/5 p-3 rounded border border-primary/15 font-mono">
-                <div className="text-[10px] text-textSecondary uppercase">INT (Logic Flow): 95/100</div>
-                <div className="h-1 bg-textSecondary/20 mt-1"><div className="w-[95%] h-full bg-textSecondary" /></div>
+                <div className="text-[10px] text-textSecondary uppercase">System Scalability: 98%</div>
+                <div className="h-1 bg-textSecondary/20 mt-1"><div className="w-[98%] h-full bg-textSecondary" /></div>
               </div>
             </div>
           </div>

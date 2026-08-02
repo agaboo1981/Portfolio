@@ -59,14 +59,13 @@ export default function Contact() {
         >
           <div className="flex items-center gap-2 mb-2 font-mono text-primary text-sm uppercase tracking-widest">
             <span className="w-8 h-[1px] bg-primary"></span>
-            Save Point
+            Get In Touch
           </div>
           <h2 className="text-4xl lg:text-5xl font-space font-bold text-textMain mb-6">
-            Ready to <span className="text-primary">Team Up?</span>
+            Let's Work <span className="text-primary">Together</span>
           </h2>
           <p className="text-textSecondary text-lg mb-8 max-w-md">
-            Whether you have a boss-level project or just want to chat about code and gaming, 
-            my inbox is always open. Save your progress and send a message!
+            Whether you have a complex enterprise project, startup opportunity, or technical inquiry, my inbox is open. Feel free to reach out and connect!
           </p>
           
           <div className="space-y-4">

@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Smartphone, GraduationCap, CreditCard } from "lucide-react";
 
@@ -9,44 +8,31 @@ const EXPLORING_ITEMS = [
     title: "AI Agent Workflows",
     description: "Designing autonomous multi-agent systems for complex task automation.",
     icon: Sparkles,
-    status: "IN_PROGRESS",
+    status: "ACTIVE R&D",
     color: "primary"
   },
   {
     title: "React Native Mobile Apps",
     description: "Building cross-platform mobile experiences with a focus on high performance.",
     icon: Smartphone,
-    status: "EXPERT",
+    status: "PRODUCTION READY",
     color: "secondary"
   },
   {
     title: "AI-Powered Learning Tools",
     description: "Creating intelligent assistants that adapt to individual student needs.",
     icon: GraduationCap,
-    status: "EXPERIMENTING",
+    status: "R&D FOCUS",
     color: "secondary"
   },
   {
     title: "Multi-provider Fintech APIs",
     description: "Integrating global payment gateways and financial data aggregators.",
     icon: CreditCard,
-    status: "EXPERT",
+    status: "PRODUCTION READY",
     color: "primary"
   }
 ];
-
-function Bitrate() {
-  const [rate, setRate] = useState(48);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRate(Math.floor(Math.random() * (64 - 32 + 1)) + 32);
-    }, 150);
-    return () => clearInterval(interval);
-  }, []);
-
-  return <span>{rate} kb/s</span>;
-}
 
 const COLOR_MAP = {
   primary: {
@@ -75,11 +61,10 @@ export default function Exploring() {
         className="text-center mb-16"
       >
         <h2 className="font-space font-bold text-4xl text-textMain tracking-tight mb-4 uppercase">
-          SKILL_<span className="text-textSecondary">TREE</span>
+          SPECIALIZATION & <span className="text-textSecondary">RESEARCH</span>
         </h2>
-        <p className="text-textSecondary font-inter tracking-wide uppercase text-xs flex items-center justify-center gap-2">
-          <span>Scanning for new technologies...</span>
-          <span className="font-mono text-textSecondary"><Bitrate /></span>
+        <p className="text-textSecondary font-inter tracking-wide text-xs uppercase flex items-center justify-center gap-2">
+          <span>Actively expanding capabilities across emerging domain architectures</span>
         </p>
       </motion.div>
 
@@ -114,17 +99,17 @@ export default function Exploring() {
                 {item.description}
               </p>
 
-              {/* Syncing Progress Bar */}
+              {/* Competency Depth Indicator */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-[8px] font-mono text-textSecondary/50 uppercase tracking-tighter">
-                  <span>Syncing_Data...</span>
-                  <span>{25 + (idx * 5)}%</span>
+                  <span>Domain_Focus</span>
+                  <span>{85 + (idx * 3)}%</span>
                 </div>
                 <div className="h-1 bg-background/50 rounded-full overflow-hidden border border-primary/10">
                   <motion.div 
                     initial={{ width: 0 }}
-                    whileInView={{ width: `${25 + (idx * 5)}%` }}
-                    transition={{ duration: 2, delay: 0.5 }}
+                    whileInView={{ width: `${85 + (idx * 3)}%` }}
+                    transition={{ duration: 1.5, delay: 0.3 }}
                     viewport={{ once: true }}
                     className={`h-full ${colors.bar} rounded-full`}
                   />

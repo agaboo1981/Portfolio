@@ -99,7 +99,7 @@ function UfoInteraction({ onAvatarReveal }: { onAvatarReveal: () => void }) {
             className="absolute -top-10 sm:-top-14 left-1/2 -translate-x-1/2 bg-primary/90 text-background px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-mono text-[8px] sm:text-[10px] border border-primary/50 whitespace-nowrap backdrop-blur-sm"
           >
             <span className="text-textSecondary mr-2">{">"}</span>
-            PLAYER_1 IDENTIFIED
+            ENGINEER LOGGED IN
             <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary/90 rotate-45 border-r border-b border-primary/50" />
           </motion.div>
         )}
@@ -171,14 +171,14 @@ function Avatar() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative w-full h-full"
       >
-        {/* Rank Badge */}
+        {/* Professional Role Badge */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={revealed ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
           transition={{ delay: 0.5 }}
-          className="absolute -top-2 -right-2 z-20 bg-textSecondary px-2 py-1 rounded text-[10px] font-bold text-background border border-primary/20"
+          className="absolute -top-2 -right-2 z-20 bg-textSecondary px-2 py-1 rounded text-[10px] font-bold text-background border border-primary/20 tracking-wider"
         >
-          <span>S-TIER</span>
+          <span>FULL-STACK & AI</span>
         </motion.div>
 
         <div className="relative w-full h-full rounded-full border-2 border-primary/50 overflow-hidden hud-glass flex items-center justify-center">
@@ -230,7 +230,7 @@ export default function Hero() {
             transition={{ delay: 0.2 }}
             className="font-mono text-primary mb-2 text-sm uppercase tracking-widest"
           >
-            &gt; Loading Player_1...
+            &gt; Full-Stack & AI Systems Engineer
           </motion.p>
           
           <h1 className="font-space font-bold text-5xl md:text-7xl lg:text-8xl mb-4 tracking-tighter text-textMain overflow-visible">
@@ -253,8 +253,8 @@ export default function Hero() {
             className="font-inter text-lg md:text-xl lg:text-2xl text-textSecondary max-w-2xl mx-auto md:mx-0 mb-8 leading-relaxed"
           >
             Software developer dedicated to building high-performance web applications and interactive experiences. 
-            I specialize in crafting a no spaghetti issues clean code with <span className="text-highlight">JavaScript,TypeScript And Python</span>, 
-            leveraging modern AI workflows and human minds to solve complex problems.
+            I specialize in crafting clean, scalable architecture with <span className="text-highlight">JavaScript, TypeScript, and Python</span>, 
+            leveraging modern AI workflows to solve complex problems.
           </motion.h2>
 
           <motion.div 
@@ -276,7 +276,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Hero Stats */}
+      {/* Hero Professional Stats */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -284,9 +284,9 @@ export default function Hero() {
         className="absolute bottom-10 left-10 hidden md:block"
       >
         <div className="font-mono text-[10px] text-textSecondary space-y-1">
-          <Typewriter text="LVL: 25" delay={1.2} />
-          <Typewriter text="CLASS: FULL-STACK ENGINEER" delay={1.4} />
-          <Typewriter text="COFFEE_INTAKE: 85%" delay={1.6} />
+          <Typewriter text="ROLE: SOFTWARE & AI ENGINEER" delay={1.2} />
+          <Typewriter text="STACK: JS / TS / PYTHON" delay={1.4} />
+          <Typewriter text="STATUS: AVAILABLE FOR PROJECTS" delay={1.6} />
         </div>
       </motion.div>
 

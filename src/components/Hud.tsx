@@ -37,18 +37,18 @@ export default function Hud() {
         )}
       </AnimatePresence>
 
-      {/* HUD Corner Elements - Hidden on mobile to prevent collision */}
+      {/* System Corner Overlay Elements */}
       <div className="absolute top-4 left-4 font-mono text-[10px] text-primary/60 tracking-tighter hidden md:block">
-        {isSecretUnlocked ? "[SECRET_LEVEL: UNLOCKED]" : "[SYSTEM_STATUS: ONLINE]"}
+        [SYSTEM_STATUS: ACTIVE]
       </div>
       <div className="absolute top-4 right-4 font-mono text-[10px] text-primary/60 tracking-tighter hidden md:block">
-        [UPTIME: 25y_4m_2d]
+        [PORTFOLIO // v2.0]
       </div>
       <div className="absolute bottom-4 left-4 font-mono text-[10px] text-primary/60 tracking-tighter vertical-text hidden md:block">
-        [CONNECTING...]
+        [READY]
       </div>
       <div className="absolute bottom-4 right-4 font-mono text-[10px] text-primary/60 tracking-tighter hidden md:block">
-        [VERSION: 2.0.26]
+        [JOSHUA ADESINA]
       </div>
     </div>
   );
