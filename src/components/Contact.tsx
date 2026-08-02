@@ -62,7 +62,7 @@ export default function Contact() {
             Get In Touch
           </div>
           <h2 className="text-4xl lg:text-5xl font-space font-bold text-textMain mb-6">
-            Let's Work <span className="text-primary">Together</span>
+            Let&apos;s Work <span className="text-primary">Together</span>
           </h2>
           <p className="text-textSecondary text-lg mb-8 max-w-md">
             Whether you have a complex enterprise project, startup opportunity, or technical inquiry, my inbox is open. Feel free to reach out and connect!

@@ -117,7 +117,7 @@ export default function Projects() {
         <div className="flex items-center gap-2 mb-2 font-mono text-primary text-sm uppercase tracking-widest">
           <span className="w-8 h-[1px] bg-primary"></span>
           <span>Showcase</span>
-          <span className="text-slate-400 font-normal text-xs">// ACTIVE DIRECTORY</span>
+          <span className="text-slate-400 font-normal text-xs">{"// ACTIVE DIRECTORY"}</span>
         </div>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-space font-bold text-slate-900">
           Active <span className="text-primary">Projects</span>
