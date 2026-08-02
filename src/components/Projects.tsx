@@ -5,6 +5,20 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
+    title: "HIMAI",
+    description: "An AI-powered stealth startup platform. Collaborated on engineering the core backend architecture, API endpoints, and intelligent AI system logic.",
+    image: "/projects/ai-sentry.svg",
+    tags: ["AI Systems", "Backend Architecture", "Python", "API Design", "Railway"],
+    category: "Stealth Startup / AI",
+    metrics: [
+      "Engineered high-performance backend architecture & APIs",
+      "Designed and integrated core AI system pipelines",
+      "Collaborative stealth startup production deployment on Railway",
+    ],
+    githubUrl: "https://github.com/BAMZY0030/AI-project-",
+    liveUrl: "https://himai.up.railway.app/",
+  },
+  {
     title: "Collapse Risk Predictor",
     description: "A machine learning pipeline and interactive application that predicts corporate financial distress using ensemble model classification and real-time risk indicators.",
     image: "/projects/collapse-risk-predictor.png",
@@ -98,23 +112,24 @@ export default function Projects() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-16 lg:mb-24"
+        className="mb-12 lg:mb-20"
       >
         <div className="flex items-center gap-2 mb-2 font-mono text-primary text-sm uppercase tracking-widest">
           <span className="w-8 h-[1px] bg-primary"></span>
-          Showcase
+          <span>Showcase</span>
+          <span className="text-slate-400 font-normal text-xs">// ACTIVE DIRECTORY</span>
         </div>
-        <h2 className="text-4xl lg:text-5xl font-space font-bold text-slate-900">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-space font-bold text-slate-900">
           Active <span className="text-primary">Projects</span>
         </h2>
       </motion.div>
 
-      {/* Sticky Scroll Layout */}
-      <div className="relative space-y-16 lg:space-y-32 pb-32">
+      {/* Ultra-Fast Responsive Sticky Scroll Layout */}
+      <div className="relative space-y-2 sm:space-y-3 lg:space-y-4 pb-12">
         {projects.map((project, index) => (
           <div
             key={project.title}
-            className="sticky top-20 lg:top-28 w-full"
+            className="sticky top-16 sm:top-20 lg:top-24 w-full"
             style={{ zIndex: index + 1 }}
           >
             <ProjectCard {...project} index={index} />
