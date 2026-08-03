@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Check, Folder } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface ProjectProps {
@@ -30,6 +30,16 @@ export default function ProjectCard({
 }: ProjectProps) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [hasMountedIframe, setHasMountedIframe] = useState(false);
+  const [isDesktopOrTablet, setIsDesktopOrTablet] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    setIsDesktopOrTablet(mediaQuery.matches);
+
+    const handler = (e: MediaQueryListEvent) => setIsDesktopOrTablet(e.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
 
   const getDisplayUrl = (url?: string) => {
     if (!url) return "localhost:3000";
@@ -45,7 +55,11 @@ export default function ProjectCard({
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      onViewportEnter={() => setHasMountedIframe(true)}
+      onViewportEnter={() => {
+        if (isDesktopOrTablet) {
+          setHasMountedIframe(true);
+        }
+      }}
       viewport={{ once: true, margin: "0px" }}
       transition={{ duration: 0.2, ease: "easeOut" }}
       className="relative group w-full"
@@ -181,9 +195,9 @@ export default function ProjectCard({
                 <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-slate-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" /></svg>
                 <span className="truncate">{getDisplayUrl(liveUrl)}</span>
                  
-                {/* Minimalist Live Indicator (Desktop only) */}
-                {iframeLoaded && (
-                  <span className="hidden lg:flex absolute right-2 sm:right-3 h-2 w-2" title="Live Environment Active">
+                {/* Minimalist Live Indicator (Tablet & Desktop only) */}
+                {isDesktopOrTablet && iframeLoaded && (
+                  <span className="hidden md:flex absolute right-2 sm:right-3 h-2 w-2" title="Live Environment Active">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                   </span>
@@ -193,46 +207,51 @@ export default function ProjectCard({
 
             {/* Preview Content Area */}
             <div className="flex-1 relative bg-slate-100 overflow-hidden">
-              {/* Mobile View: High Quality Image Preview (No Iframe) */}
-              <div className="block lg:hidden relative w-full h-full">
-                <Image
-                  src={image}
-                  alt={`${title} Mobile Preview`}
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-
-              {/* Desktop View: Live Environment Iframe / Fallback Image */}
-              {liveUrl && !iframeLoaded && (
-                <div className="hidden lg:flex absolute inset-0 bg-slate-50 flex-col items-center justify-center gap-4 z-0">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-4 border-slate-200 border-t-primary animate-spin" />
-                  <span className="font-mono text-[11px] sm:text-xs text-slate-400 font-medium tracking-wide">Loading Live Environment...</span>
-                </div>
-              )}
-              
-              {liveUrl && hasMountedIframe ? (
-                <iframe
-                  src={liveUrl}
-                  loading="lazy"
-                  onLoad={() => setIframeLoaded(true)}
-                  className={`hidden lg:block absolute inset-0 w-full h-full border-none transition-opacity duration-700 z-0 ${iframeLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  title={`${title} live preview`}
-                />
-              ) : !liveUrl ? (
-                <div className="hidden lg:block relative w-full h-full">
+              {/* Mobile View: High Quality Image Preview (No Iframe Node in DOM) */}
+              {!isDesktopOrTablet ? (
+                <div className="relative w-full h-full">
                   <Image
                     src={image}
-                    alt={`${title} Preview`}
+                    alt={`${title} Mobile Preview`}
                     fill
                     className="object-cover object-top"
+                    priority={index === 0}
                   />
                 </div>
-              ) : null}
+              ) : (
+                <>
+                  {/* Tablet & Desktop View: Live Environment Iframe / Fallback Image */}
+                  {liveUrl && !iframeLoaded && (
+                    <div className="absolute inset-0 bg-slate-50 flex flex-col items-center justify-center gap-4 z-0">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-4 border-slate-200 border-t-primary animate-spin" />
+                      <span className="font-mono text-[11px] sm:text-xs text-slate-400 font-medium tracking-wide">Loading Live Environment...</span>
+                    </div>
+                  )}
+                  
+                  {liveUrl && (hasMountedIframe || isDesktopOrTablet) ? (
+                    <iframe
+                      src={liveUrl}
+                      loading="lazy"
+                      onLoad={() => setIframeLoaded(true)}
+                      className={`absolute inset-0 w-full h-full border-none transition-opacity duration-700 z-0 ${iframeLoaded ? 'opacity-100' : 'opacity-0'}`}
+                      title={`${title} live preview`}
+                    />
+                  ) : !liveUrl ? (
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={image}
+                        alt={`${title} Preview`}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+                  ) : null}
 
-              {/* Invisible Scroll Shield for Desktop Iframe */}
-              {iframeLoaded && (
-                <div className="hidden lg:block absolute inset-0 z-10 bg-transparent opacity-100 group-hover/browser:opacity-0 pointer-events-auto group-hover/browser:pointer-events-none transition-opacity duration-300" />
+                  {/* Invisible Scroll Shield for Tablet & Desktop Iframe */}
+                  {iframeLoaded && (
+                    <div className="absolute inset-0 z-10 bg-transparent opacity-100 group-hover/browser:opacity-0 pointer-events-auto group-hover/browser:pointer-events-none transition-opacity duration-300" />
+                  )}
+                </>
               )}
             </div>
           </div>
@@ -241,3 +260,4 @@ export default function ProjectCard({
     </motion.div>
   );
 }
+
