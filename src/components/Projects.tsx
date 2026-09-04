@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import ProjectCard from "./ProjectCard";
+import ProjectRow from "./ProjectRow";
 
 const projects = [
   {
@@ -105,6 +106,8 @@ const projects = [
 ];
 
 export default function Projects() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
     <section id="projects" className="py-20 pt-32 lg:pt-32 px-6 lg:px-20 max-w-[1400px] mx-auto">
       <motion.div
@@ -117,24 +120,41 @@ export default function Projects() {
         <div className="flex items-center gap-2 mb-2 font-mono text-primary text-sm uppercase tracking-widest">
           <span className="w-8 h-[1px] bg-primary"></span>
           <span>Showcase</span>
-          <span className="text-slate-400 font-normal text-xs">{"// ACTIVE DIRECTORY"}</span>
+          <span className="text-slate-400 font-normal text-xs">{"// 07 SHIPPED SYSTEMS"}</span>
         </div>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-space font-bold text-slate-900">
           Active <span className="text-primary">Projects</span>
         </h2>
       </motion.div>
 
-      {/* Ultra-Fast Responsive Sticky Scroll Layout */}
-      <div className="relative space-y-2 sm:space-y-3 lg:space-y-4 pb-12">
-        {projects.map((project, index) => (
-          <div
-            key={project.title}
-            className="sticky top-16 sm:top-20 lg:top-24 w-full"
-            style={{ zIndex: index + 1 }}
-          >
-            <ProjectCard {...project} index={index} />
-          </div>
-        ))}
+      {/* Project Registry Index */}
+      <div className="pb-12">
+        {/* Registry table header (desktop) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="hidden lg:grid grid-cols-[48px_minmax(0,1fr)_200px_130px_56px] gap-x-6 px-6 pb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-slate-400"
+        >
+          <span>Idx</span>
+          <span>Project</span>
+          <span>Category</span>
+          <span>Status</span>
+          <span className="text-right">Open</span>
+        </motion.div>
+
+        <div className="border-t border-slate-200">
+          {projects.map((project, index) => (
+            <ProjectRow
+              key={project.title}
+              index={index}
+              isOpen={openIndex === index}
+              onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+              {...project}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
