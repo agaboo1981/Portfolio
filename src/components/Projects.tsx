@@ -16,7 +16,7 @@ const projects = [
       "Collaborative stealth startup production deployment on Railway",
     ],
     githubUrl: "https://github.com/BAMZY0030/AI-project-",
-    liveUrl: "https://himai.up.railway.app/",
+    liveUrl: "https://www.himai.com.ng",
   },
   {
     title: "Collapse Risk Predictor",
