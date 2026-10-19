@@ -1,76 +1,99 @@
 "use client";
 
-import {  Github, Linkedin, ChevronUp } from "lucide-react";
-import { FaXTwitter } from "react-icons/fa6";
+/**
+ * Footer — the designed close on the inverse ground: four quiet columns, the
+ * name running the full width once more, one legal line.
+ */
+const COLUMNS: {
+  head: string;
+  items: { label: string; href: string; external?: boolean }[];
+}[] = [
+  {
+    head: "Site",
+    items: [
+      { label: "Work", href: "#work" },
+      { label: "About", href: "#about" },
+      { label: "Skills", href: "#skills" },
+      { label: "Contact", href: "#contact" },
+    ],
+  },
+  {
+    head: "Elsewhere",
+    items: [
+      { label: "X / Twitter", href: "https://x.com/Agabo07", external: true },
+      { label: "GitHub", href: "https://github.com/agaboo1981", external: true },
+      { label: "LinkedIn", href: "https://linkedin.com/in/joshua-adesina", external: true },
+    ],
+  },
+  {
+    head: "Contact",
+    items: [
+      { label: "giganticjosha@gmail.com", href: "mailto:giganticjosha@gmail.com" },
+      { label: "Lagos, Nigeria", href: "" },
+    ],
+  },
+  {
+    head: "Status",
+    items: [
+      { label: "Available for projects", href: "#contact" },
+      { label: "Remote-friendly", href: "" },
+    ],
+  },
+];
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <footer className="relative border-t border-primary/10 bg-background px-6 py-12 lg:px-20">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-        {/* Branding & Witty Remark */}
-        <div className="text-center md:text-left">
-          <h3 className="font-space text-xl font-bold text-textMain uppercase tracking-tighter">
-            Joshua <span className="text-primary">Adesina</span>
-          </h3>
-          <p className="mt-2 text-sm text-textSecondary max-w-xs">
-            Built with Next.js 15, Framer Motion, and a lot of caffeine. 
-            No pixels were harmed in the making of this quest log.
-          </p>
-        </div>
-
-        {/* Social Links */}
-        <div className="flex items-center gap-6">
-          <a
-            href="https://x.com/Agabo07"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-textSecondary transition-all hover:text-primary hover:scale-110"
-          >
-            <FaXTwitter size={24} />
-          </a>
-          <a
-            href="https://github.com/agaboo1981"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-textSecondary transition-all hover:text-primary hover:scale-110"
-          >
-            <Github size={24} />
-          </a>
-          <a
-            href="https://linkedin.com/in/joshua-adesina"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-textSecondary transition-all hover:text-primary hover:scale-110"
-          >
-            <Linkedin size={24} />
-          </a>
-        </div>
-
-        {/* Back to Top */}
-        <button
-          onClick={scrollToTop}
-          className="group flex flex-col items-center gap-2 font-mono text-[10px] text-textSecondary uppercase tracking-widest transition-colors hover:text-primary"
-        >
-          <div className="h-10 w-10 rounded-full border border-primary/15 flex items-center justify-center transition-all group-hover:border-primary">
-            <ChevronUp size={20} />
+    <footer className="bg-inverse px-5 pb-8 pt-24 text-inverse sm:px-8 sm:pt-32 md:px-10">
+      <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-x-8">
+        {COLUMNS.map((col) => (
+          <div key={col.head}>
+            <p className="text-[16px] text-inverse-text">{col.head}</p>
+            <ul className="mt-3 space-y-1.5">
+              {col.items.map((item) => (
+                <li key={item.label}>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      {...(item.external
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                      className="text-[14px] text-inverse-muted transition-colors duration-200 hover:text-inverse-text"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <span className="text-[14px] text-inverse-muted">{item.label}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
-          <span>Return to Start</span>
-        </button>
+        ))}
       </div>
 
-      <div className="mt-12 flex flex-col items-center gap-4">
-        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10">
-          <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-          <span className="font-mono text-[8px] text-primary/60 uppercase tracking-widest">System_Status: Optimized</span>
-        </div>
-        <div className="text-center font-mono text-[10px] text-textSecondary/20 uppercase tracking-[0.2em]">
-          © {new Date().getFullYear()} Joshua Adesina • All rights reserved • [VERSION: 2.0.27]
-        </div>
+      <div className="mt-24 sm:mt-32">
+        <svg
+          viewBox="0 0 1200 108"
+          className="block h-auto w-full text-inverse-text"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <text
+            x="0"
+            y="100"
+            textLength="1200"
+            lengthAdjust="spacingAndGlyphs"
+            className="fill-current font-display font-bold"
+            style={{ fontSize: "138px", letterSpacing: "-0.02em" }}
+          >
+            JOSHUA ADESINA
+          </text>
+        </svg>
       </div>
+
+      <p className="mt-5 text-[14px] text-inverse-muted">
+        © {new Date().getFullYear()} Joshua Adesina
+      </p>
     </footer>
   );
 }

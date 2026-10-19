@@ -1,204 +1,99 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { Send, Trophy, Loader2 } from "lucide-react";
-import { useState, useRef } from "react";
-import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 
+/**
+ * Contact — 100svh in the inverse palette. The email address is the display
+ * type: one line fitted to the width on desktop, broken after the @ on a
+ * phone. No form.
+ */
 export default function Contact() {
-  const [isSending, setIsSending] = useState(false);
-  const [isSent, setIsSent] = useState(false);
-  const [error, setError] = useState(false);
-  const formRef = useRef<HTMLFormElement>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formRef.current) return;
-
-    setIsSending(true);
-    setError(false);
-
-    // Get EmailJS credentials from environment variables
-    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-    // Validate that credentials are configured
-    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY || 
-        SERVICE_ID === 'YOUR_SERVICE_ID' || 
-        TEMPLATE_ID === 'YOUR_TEMPLATE_ID' || 
-        PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-      console.error("EmailJS is not configured. Please add your credentials to .env.local");
-      setError(true);
-      setIsSending(false);
-      return;
-    }
-
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
-      .then(() => {
-        setIsSent(true);
-        setIsSending(false);
-        formRef.current?.reset();
-        // Hide success message after 5 seconds
-        setTimeout(() => setIsSent(false), 5000);
-      }, (err) => {
-        console.error("EMAILJS ERROR:", err);
-        setError(true);
-        setIsSending(false);
-      });
-  };
+  const email = "giganticjosha@gmail.com";
 
   return (
-    <section id="contact" className="py-20 pt-32 lg:pt-20 px-6 lg:px-20 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Contact Info */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+    <section
+      id="contact"
+      className="relative flex min-h-[100svh] flex-col justify-between bg-inverse px-5 pb-6 pt-16 text-inverse-text sm:px-8 sm:pt-20 md:px-10"
+    >
+      <motion.p
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        className="max-w-[16em] text-[19px] leading-[1.45]"
+      >
+        Write a few lines about what you&apos;re building. I read everything.
+      </motion.p>
+
+      {/* The email as display type */}
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-10 sm:mb-14"
+      >
+        {/* Phone: break after the @ */}
+        <a
+          href={`mailto:${email}`}
+          className="block text-[12.5vw] font-medium leading-[0.98] tracking-[-0.03em] text-inverse-text transition-colors duration-200 hover:text-inverse-muted md:hidden"
         >
-          <div className="flex items-center gap-2 mb-2 font-mono text-primary text-sm uppercase tracking-widest">
-            <span className="w-8 h-[1px] bg-primary"></span>
-            Get In Touch
-          </div>
-          <h2 className="text-4xl lg:text-5xl font-space font-bold text-textMain mb-6">
-            Let&apos;s Work <span className="text-primary">Together</span>
-          </h2>
-          <p className="text-textSecondary text-lg mb-8 max-w-md">
-            Whether you have a complex enterprise project, startup opportunity, or technical inquiry, my inbox is open. Feel free to reach out and connect!
-          </p>
-          
-          <div className="space-y-4">
-            <a 
-              href="mailto:giganticjosha@gmail.com" 
-              className="flex items-center gap-4 text-textSecondary hover:text-primary transition-all cursor-pointer group w-fit"
+          giganticjosha
+          <br />
+          @gmail.com
+        </a>
+
+        {/* Desktop: one line, fitted edge to edge */}
+        <a href={`mailto:${email}`} aria-label={`Email ${email}`} className="hidden md:block">
+          <svg
+            viewBox="0 0 1200 112"
+            className="block h-auto w-full text-inverse-text transition-colors duration-200 hover:text-inverse-muted"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <text
+              x="0"
+              y="100"
+              textLength="1200"
+              lengthAdjust="spacingAndGlyphs"
+              className="fill-current font-display font-medium"
+              style={{ fontSize: "132px", letterSpacing: "-0.03em" }}
             >
-              <div className="h-10 w-10 rounded-lg border border-primary/20 bg-primary/5 flex items-center justify-center transition-all">
-                <span className="font-mono text-primary group-hover:scale-110 transition-transform">@</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-mono text-[10px] text-textSecondary/40 uppercase tracking-tighter">Email_Direct</span>
-                <span className="font-space font-bold group-hover:translate-x-1 transition-transform tracking-tight">giganticjosha@gmail.com</span>
-              </div>
-            </a>
+              giganticjosha@gmail.com
+            </text>
+          </svg>
+        </a>
+      </motion.div>
 
-            <a 
-              href="https://x.com/Agabo07" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 text-textSecondary hover:text-primary transition-all cursor-pointer group w-fit"
-            >
-              <div className="h-10 w-10 rounded-lg border border-textSecondary/20 bg-textSecondary/5 flex items-center justify-center transition-all">
-                <svg 
-                  viewBox="0 0 24 24" 
-                  aria-hidden="true" 
-                  className="h-5 w-5 fill-textSecondary group-hover:scale-110 transition-transform"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
-                </svg>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-mono text-[10px] text-textSecondary/40 uppercase tracking-tighter">Follow_X</span>
-                <span className="font-space font-bold group-hover:translate-x-1 transition-transform tracking-tight">@Agabo07</span>
-              </div>
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Contact Form */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="relative rounded-2xl hud-glass p-8"
-        >
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <label className="font-mono text-xs uppercase text-textSecondary ml-1">Hero Name</label>
-              <input
-                required
-                name="user_name"
-                type="text"
-                placeholder="How should I call you?"
-                className="w-full terminal-input placeholder:text-textSecondary/30"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <label className="font-mono text-xs uppercase text-textSecondary ml-1">Comm Channel (Email)</label>
-              <input
-                required
-                name="user_email"
-                type="email"
-                placeholder="Where should I reply?"
-                className="w-full terminal-input placeholder:text-textSecondary/30"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label className="font-mono text-xs uppercase text-textSecondary ml-1">The Quest Details (Message)</label>
-              <textarea
-                required
-                name="message"
-                rows={4}
-                placeholder="What's the objective?"
-                className="w-full terminal-input placeholder:text-textSecondary/30 resize-none"
-              />
-            </div>
-
-            <button
-              disabled={isSending}
-              type="submit"
-              className="w-full btn-primary flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSending ? (
-                <>
-                  <span>UPLOADING_DATA...</span>
-                  <Loader2 size={18} className="animate-spin" />
-                </>
-              ) : (
-                <>
-                  <span>SEND MESSAGE</span>
-                  <Send size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </>
-              )}
-            </button>
-            
-            {error && (
-              <p className="text-center font-mono text-[10px] text-primary mt-2 uppercase tracking-widest animate-pulse">
-                Error: Connection_Failed. Please try again.
-              </p>
-            )}
-          </form>
-
-          {/* Achievement Notification */}
-          <AnimatePresence>
-            {isSent && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                className="absolute inset-0 flex items-center justify-center bg-background/90 rounded-2xl z-10"
-              >
-                <div className="text-center space-y-4">
-                  <div className="mx-auto w-16 h-16 rounded-full bg-primary flex items-center justify-center text-background animate-bounce">
-                    <Trophy size={32} />
-                  </div>
-                  <h3 className="font-space font-bold text-2xl text-primary uppercase tracking-wider">
-                    Message Sent!
-                  </h3>
-                  <p className="text-textSecondary font-mono text-sm">Achievement Unlocked: Communication Master</p>
-                  <button 
-                    onClick={() => setIsSent(false)}
-                    className="text-primary text-xs uppercase font-bold tracking-widest hover:underline"
-                  >
-                    Send another?
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+      {/* Bottom corners */}
+      <div className="flex flex-col gap-4 text-[14px] text-inverse-muted sm:flex-row sm:items-center sm:justify-between">
+        <p>Lagos, Nigeria · replies within two days</p>
+        <div className="flex items-center gap-6">
+          <a
+            href="https://x.com/Agabo07"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors duration-200 hover:text-inverse-text"
+          >
+            X ↗
+          </a>
+          <a
+            href="https://github.com/agaboo1981"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors duration-200 hover:text-inverse-text"
+          >
+            GitHub ↗
+          </a>
+          <a
+            href="https://linkedin.com/in/joshua-adesina"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors duration-200 hover:text-inverse-text"
+          >
+            LinkedIn ↗
+          </a>
+        </div>
       </div>
     </section>
   );

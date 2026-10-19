@@ -1,88 +1,94 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import ScrollProgress from "./ScrollProgress";
+import { AnimatePresence, motion } from "framer-motion";
 
 const NAV_LINKS = [
-  { href: "#hero", label: "Start" },
-  { href: "#about", label: "Bio" },
+  { href: "#work", label: "Work" },
+  { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
-  { href: "#exploring", label: "Armory" },
-  { href: "#projects", label: "Quests" },
-  { href: "#fun", label: "Side Quest" },
-  { href: "#contact", label: "Contact", special: true },
+  { href: "#beyond", label: "Beyond" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      <nav className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] sm:w-auto max-w-fit">
-        <div className="hud-glass px-4 sm:px-6 py-2 rounded-full flex flex-col gap-1 items-center overflow-hidden">
-          {/* Desktop Nav */}
-          <div className="hidden sm:flex gap-6 items-center text-xs font-space font-medium tracking-widest uppercase">
-            {NAV_LINKS.map((link) => (
+    <header className="sticky top-0 z-50 bg-background">
+      <div className="page-shell mx-auto flex h-14 max-w-[1440px] items-center justify-between">
+        <a
+          href="#top"
+          className="font-display text-[16px] font-medium tracking-tight text-ink"
+        >
+          Joshua Adesina
+        </a>
+
+        {/* Desktop links */}
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Main">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-[16px] text-muted transition-colors duration-200 hover:text-ink"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className="btn-solid !min-h-[38px] !px-4 !text-[14px]"
+          >
+            Email me
+          </a>
+        </nav>
+
+        {/* Mobile toggle */}
+        <button
+          type="button"
+          onClick={() => setIsOpen((v) => !v)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          className="flex h-11 min-w-[44px] items-center justify-center text-ink md:hidden"
+        >
+          <span className="text-[16px] font-medium">{isOpen ? "Close" : "Menu"}</span>
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.nav
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            aria-label="Mobile"
+            className="bg-background px-5 pb-5 shadow-[0_16px_40px_rgba(0,0,0,0.12)] md:hidden" /* taste-skill-ignore: shadow on a floating menu, allowed */
+          >
+            <div className="flex flex-col">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="min-h-[48px] py-3 text-[16px] text-text"
+                >
+                  {link.label}
+                </a>
+              ))}
               <a
-                key={link.href}
-                href={link.href}
-                className={`hover:text-primary transition-colors whitespace-nowrap ${
-                  link.special ? "text-textSecondary" : ""
-                }`}
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className="btn-solid mt-4 w-full"
               >
-                {link.label}
+                Email me
               </a>
-            ))}
-          </div>
-
-          {/* Mobile Nav Header */}
-          <div className="flex sm:hidden w-full items-center justify-between gap-8 px-2">
-            <span className="font-space font-bold text-[10px] text-primary tracking-widest uppercase">
-              Menu
-            </span>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-primary hover:text-textSecondary transition-colors"
-            >
-              {isOpen ? <X size={18} /> : <Menu size={18} />}
-            </button>
-          </div>
-
-          {/* Scroll Progress integrated into HUD */}
-          <div className="w-full mt-1 px-2">
-            <ScrollProgress />
-          </div>
-        </div>
-
-        {/* Mobile Nav Dropdown */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.95 }}
-              className="absolute top-16 left-0 right-0 sm:hidden hud-glass rounded-2xl overflow-hidden p-4"
-            >
-              <div className="flex flex-col gap-4 items-center">
-                {NAV_LINKS.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-sm font-space font-medium tracking-widest uppercase ${
-                      link.special ? "text-textSecondary" : "text-textMain"
-                    } hover:text-primary transition-colors`}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
-    </>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

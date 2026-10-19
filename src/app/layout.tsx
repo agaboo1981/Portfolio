@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
-import Hud from "@/components/Hud";
 import Navbar from "@/components/Navbar";
 
 const spaceGrotesk = Space_Grotesk({
@@ -14,14 +13,10 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-});
-
 export const metadata: Metadata = {
-  title: "Joshua Adesina | Portfolio",
-  description: "Civil engineer by degree, tech explorer by passion.",
+  title: "Joshua Adesina — Full-Stack & AI Engineer",
+  description:
+    "Full-stack and AI engineer in Lagos. I build web applications, APIs, and AI tooling in JavaScript, TypeScript, and Python.",
 };
 
 export default function RootLayout({
@@ -30,15 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased selection:bg-primary selection:text-background`}
+        className={`${spaceGrotesk.variable} ${inter.variable} antialiased`}
         suppressHydrationWarning
       >
-        <div className="scanlines" />
-        <Hud />
         <Navbar />
-
         <main className="relative">{children}</main>
       </body>
     </html>

@@ -1,0 +1,50 @@
+name: Refresh project screenshots
+
+# Re-captures the live project screenshots in public/projects/ on every push
+# to main, so the portfolio always shows the current version of each site.
+# - Never commits a broken capture: scripts/capture-all.mjs keeps the previous
+#   PNG for any site it cannot capture (asleep Streamlit apps, timeouts).
+# - The bot's own commit message contains [skip ci], which stops the workflow
+#   from re-running on that push (no loop).
+# - Can also be run manually from the Actions tab (workflow_dispatch).
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-screenshots
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Capture screenshots
+        run: node scripts/capture-all.mjs
+
+      - name: Commit refreshed screenshots
+        run: |
+          git config user.name "screenshot-bot"
+          git config user.email "actions@github.com"
+          git add public/projects
+          if git diff --cached --quiet; then
+            echo "Nothing changed — no commit."
+          else
+            git commit -m "chore: refresh project screenshots [skip ci]"
+            git push
+          fi

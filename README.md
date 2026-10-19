@@ -1,90 +1,88 @@
-# Joshua Adesina Portfolio
+# Joshua Adesina — Portfolio
 
-A gaming-inspired, interactive portfolio built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
+A minimalist, monochrome developer portfolio built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 
-This project showcases my engineering projects, technical skills, and design style through an arcade/cyberpunk user experience.
+White-on-black editorial layout: a full-width monument hero, an index-style project list with a cursor-following screenshot preview on desktop (inline screenshots on mobile), text-column skills, and a giant-type contact screen.
 
 ## Features
 
-- Cinematic hero animation with custom UFO sequence and avatar reveal
-- Smooth section transitions and scroll-based motion effects
-- Project showcase with difficulty tiers and achievement-style metadata
-- Contact form integration with EmailJS
-- Responsive layout across mobile, tablet, and desktop
-- Themed UI system with custom Tailwind color tokens and shadows
+- Static export-friendly Next.js App Router build — no backend, no environment variables
+- Editorial project index: seven rows with real screenshots of the live sites
+- Cursor-following screenshot preview (spring-smoothed) on desktop; inline thumbnails on small screens
+- Auto-refreshing project screenshots — a GitHub Action re-captures the live sites on every push to `main`
+- Fully responsive, from 390px phones to 1440px desktop
+- Reduced-motion support for entrance animations and hover effects
 
 ## Tech Stack
 
-- **Framework:** Next.js 15 (App Router)
+- **Framework:** Next.js 15 (App Router, Turbopack)
 - **Language:** TypeScript + React 19
 - **Styling:** Tailwind CSS
 - **Animation:** Framer Motion
 - **Icons:** Lucide React
-- **Email Service:** EmailJS (`@emailjs/browser`)
+- **Screenshot automation:** Puppeteer (headless Chrome) via `puppeteer-core`
 
 ## Project Structure
 
 ```text
 src/
   app/
-    page.tsx               # Main landing page composition
+    layout.tsx             # Fonts (Space Grotesk + Inter), metadata
+    globals.css            # Design tokens, keyframes, reduced-motion fallbacks
+    page.tsx               # Section composition
   components/
-    Hero.tsx               # Intro animation and hero content
-    About.tsx
-    Skills.tsx
-    Exploring.tsx
-    Projects.tsx
-    ProjectCard.tsx
-    FunHobbies.tsx
-    Contact.tsx            # EmailJS contact form
-    Footer.tsx
-  hooks/
-    useKeyboardShortcut.ts # Keyboard-triggered interaction helper
+    Navbar.tsx             # Sticky nav with mobile menu
+    Hero.tsx               # SVG-fitted full-width name + portrait
+    Projects.tsx           # Editorial index + cursor-following preview
+    About.tsx              # Drop-cap bio + facts rail
+    Skills.tsx             # Text-column skills with hover descriptions
+    Beyond.tsx             # Off-hours list
+    Contact.tsx            # Full-screen email display type
+    Footer.tsx             # Black footer with full-width wordmark
 public/
-  projects/                # Project card assets
+  projects/                # Auto-refreshed project screenshots
+scripts/
+  capture-all.mjs          # Batch capture (reads screenshots.config.json)
+  capture-sites.mjs        # Single-site capture CLI
+  lib-capture.mjs          # Shared headless-browser logic
+  screenshots.config.json  # Project URLs and output paths
+.github/workflows/
+  refresh-screenshots.yml  # Capture on every push to main
 ```
 
 ## Getting Started
 
-### 1) Install dependencies
-
 ```bash
 npm install
-```
-
-### 2) Configure environment variables
-
-Create a `.env.local` file in the project root:
-
-```env
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=YOUR_SERVICE_ID
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=YOUR_TEMPLATE_ID
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=YOUR_PUBLIC_KEY
-```
-
-### 3) Run the development server
-
-```bash
 npm run dev
 ```
 
-Open `http://localhost:3000` in your browser.
+Open [http://localhost:3000](http://localhost:3000). No configuration needed — the site has no environment variables.
 
 ## Available Scripts
 
-- `npm run dev` - start local development server (Turbopack)
-- `npm run build` - create production build
-- `npm run start` - start production server
-- `npm run lint` - run ESLint checks
+| Script | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Create the production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | Run ESLint |
+| `npm run capture:screenshots` | Re-capture all project screenshots locally |
 
-## Notes
+## Screenshot Pipeline
 
-- Contact form submission requires valid EmailJS credentials.
-- Some project links may be placeholders while repositories or demos are being finalized.
+Project screenshots live in `public/projects/` and are re-captured from the live sites:
+
+- **Automatically**: on every push to `main`, `.github/workflows/refresh-screenshots.yml` runs `npm run capture:screenshots` in headless Chrome on a GitHub runner and commits any changed PNGs. It never commits a broken capture — if a site is unreachable, its previous screenshot is kept.
+- **Locally**: `npm run capture:screenshots`, or one at a time:
+
+```bash
+node scripts/capture-sites.mjs <url> <out.png> [--wake]
+```
+
+Sites built on Streamlit's free tier sleep when idle; their entries use `"wake": true` in `scripts/screenshots.config.json` so the capture waits for them to boot.
 
 ## Deployment (Vercel)
 
 1. Import the repository into Vercel.
-2. Set the project root to this folder if your repo contains multiple projects.
-3. Add the same environment variables from `.env.local`.
-4. Deploy.
+2. Deploy — no build overrides or environment variables are required.

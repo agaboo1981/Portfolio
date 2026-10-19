@@ -1,193 +1,63 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Bot } from "lucide-react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
-const INITIAL_MESSAGES = [
-  { id: 1, sender: "bot", text: "Hello! I'm AGABOO, Joshua's AI Twin. Ask me anything about his work and skills!" },
-];
-
-const FAQ = [
-  { q: "Who is Joshua?", a: "Joshua is a Full-Stack Engineer and AI Systems Specialist with a background in Civil Engineering. He builds robust digital infrastructure with structural engineering principles and clean architectural patterns." },
-  { q: "What's his tech stack?", a: "His primary stack includes React/Next.js for Front-end, Node.js/Python for Back-end APIs, PostgreSQL/MongoDB, and specialized AI toolkits (Gemini, LangChain, PyTorch) for intelligent workflows." },
-  { q: "Key Engineering Strengths?", a: "Systems Architecture (building scalable, modular codebases), Production AI Integration, and Rapid Prototyping." },
-  { q: "Tell me about the Predictor!", a: "He architected a machine learning pipeline to predict corporate distress, achieving a 92% recall rate using ensemble classification models, Scikit-Learn, and Streamlit." },
-  { q: "Tell me about his stealth startup role.", a: "Joshua collaborated on a stealth startup developing an AI-driven platform (HIMAI). He engineered the platform's core backend architecture and intelligent AI system orchestration pipelines." },
-];
-
-function Message({ m }: { m: { id: number; sender: string; text: string } }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-      animate={{ 
-        opacity: 1, 
-        y: 0, 
-        scale: 1,
-        transition: { type: "spring", stiffness: 300, damping: 20 }
-      }}
-      className={`flex items-start gap-3 ${m.sender === "user" ? "flex-row-reverse" : ""}`}
-    >
-      <div className={`p-3 rounded-2xl max-w-[85%] break-words relative overflow-hidden ${
-        m.sender === "bot" 
-          ? "bg-primary/10 text-textMain border border-primary/20 rounded-tl-none" 
-          : "bg-textSecondary/20 text-textMain border border-textSecondary/20 rounded-tr-none"
-      }`}>
-        {m.text}
-      </div>
-    </motion.div>
-  );
-}
-
+/**
+ * About — no heading, one biography set large with the portrait floated as a
+ * drop capital, and a narrow column of facts to its left.
+ */
 export default function About() {
-  const [messages, setMessages] = useState(INITIAL_MESSAGES);
-  const [isTyping, setIsTyping] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTo({
-        top: scrollRef.current.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-  }, [messages, isTyping]);
-
-  const handleQuestionClick = (question: string, answer: string) => {
-    if (isTyping) return;
-    
-    setMessages(prev => [
-      ...prev, 
-      { id: Date.now(), sender: "user", text: question },
-    ]);
-    
-    setIsTyping(true);
-    
-    setTimeout(() => {
-      setMessages(prev => [
-        ...prev,
-        { id: Date.now() + 1, sender: "bot", text: answer }
-      ]);
-      setIsTyping(false);
-    }, 800);
-  };
-
   return (
-    <section id="about" className="py-24 px-4 max-w-5xl mx-auto min-h-screen flex flex-col justify-center mt-8 sm:mt-12 md:mt-0">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-        {/* Bio Text */}
+    <section id="about" className="page-shell mx-auto max-w-[1440px] pb-20 pt-16 lg:pb-28 lg:pt-24">
+      <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-12 lg:gap-x-8">
+        {/* Biography */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="space-y-6"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-10"
         >
-          <div className="inline-block px-3 py-1 rounded bg-primary/10 border border-primary/20 font-mono text-[10px] text-primary uppercase tracking-widest mb-2">
-            PROFILE // ENGINEERING BACKGROUND
-          </div>
-          <h2 className="font-space font-bold text-4xl text-textMain tracking-tight">
-            JOSHUA <span className="text-primary">BIO</span>
-          </h2>
-          <div className="space-y-4 font-inter text-textSecondary text-lg leading-relaxed">
-            <p>
-              By day, I architect robust digital infrastructures and build modern web and mobile applications. I explore the frontiers of <span className="text-textSecondary font-bold">AI multi-agent systems</span> and high-performance web experiences.
-            </p>
-            <p>
-              My background in structural engineering gives me a unique lens: I don&apos;t just write code; I build <span className="text-primary italic">fault-tolerant systems</span> that scale. Every line of code is a structural beam, every API a strategic bridge.
-            </p>
-            <div className="grid grid-cols-2 gap-4 pt-4">
-              <div className="bg-primary/5 p-3 rounded border border-primary/15 font-mono">
-                <div className="text-[10px] text-primary uppercase">Code Reliability: 99.9%</div>
-                <div className="h-1 bg-primary/20 mt-1"><div className="w-[99.9%] h-full bg-primary" /></div>
-              </div>
-              <div className="bg-primary/5 p-3 rounded border border-primary/15 font-mono">
-                <div className="text-[10px] text-textSecondary uppercase">System Scalability: 98%</div>
-                <div className="h-1 bg-textSecondary/20 mt-1"><div className="w-[98%] h-full bg-textSecondary" /></div>
-              </div>
-            </div>
-          </div>
+          <p className="max-w-[24em] text-[23px] leading-[1.3] tracking-[-0.01em] text-text md:text-[30px] lg:text-[34px] lg:leading-[1.25]">
+            <span className="relative float-left mr-4 mb-2 inline-block h-[3.2em] w-[3.2em] overflow-hidden bg-surface sm:mr-5">
+              <Image
+                src="/assets/joshua.jpg"
+                alt="Portrait of Joshua Adesina"
+                fill
+                sizes="150px"
+                className="grayscale-photo object-cover object-[center_35%]"
+              />
+            </span>
+            <span className="font-medium text-ink">I&apos;m Joshua.</span>{" "}
+            Civil Engineering turned into software: Python backends, React
+            frontends.
+          </p>
+          <p className="mt-8 max-w-[24em] text-[23px] leading-[1.3] tracking-[-0.01em] text-text md:text-[30px] lg:text-[34px] lg:leading-[1.25]">
+            The systems thinking came from structures: load paths, tolerance,
+            and what happens when a piece fails.
+          </p>
         </motion.div>
 
-        {/* AGABOO Chat */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="hud-glass rounded-2xl h-[400px] sm:h-[500px] flex flex-col overflow-hidden"
+        {/* Facts rail */}
+        <motion.aside
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-row flex-wrap gap-x-10 gap-y-2 items-start
+                     lg:col-span-2 lg:flex-col lg:gap-y-3 lg:pt-2"
         >
-          {/* Chat Header */}
-          <div className="bg-primary/10 px-4 py-3 border-b border-primary/20 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
-                <Bot size={18} className="text-primary" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-space font-bold text-xs uppercase tracking-widest text-primary">AGABOO_INTERFACE v1.0</span>
-                <span className="text-[8px] text-primary/50 font-mono">STATUS: ONLINE</span>
-              </div>
-            </div>
-            {/* System Pulse */}
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-primary/10 border border-primary/20">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-[7px] font-mono text-primary">OPTIMIZED</span>
-            </div>
-          </div>
-
-          {/* Messages Area */}
-          <div 
-            ref={scrollRef}
-            className="flex-1 overflow-y-auto p-4 space-y-4 font-inter text-sm scrollbar-hide scroll-smooth"
+          <p className="text-[14px] text-text">Lagos, Nigeria</p>
+          <p className="text-[14px] text-muted">Full-stack & AI engineer</p>
+          <a
+            href="mailto:giganticjosha@gmail.com"
+            className="text-[14px] text-muted underline decoration-1 underline-offset-4 transition-colors hover:text-ink lg:break-all"
           >
-            <AnimatePresence initial={false}>
-              {messages.map((m) => (
-                <Message key={m.id} m={m} />
-              ))}
-              {isTyping && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-start gap-3"
-                >
-                  <div className="bg-primary/10 text-textMain border border-primary/20 p-3 rounded-2xl rounded-tl-none">
-                    <div className="flex gap-1">
-                      <motion.span
-                        animate={{ opacity: [0, 1, 0] }}
-                        transition={{ duration: 0.8, repeat: Infinity }}
-                        className="w-1.5 h-1.5 bg-primary rounded-full"
-                      />
-                      <motion.span
-                        animate={{ opacity: [0, 1, 0] }}
-                        transition={{ duration: 0.8, repeat: Infinity, delay: 0.2 }}
-                        className="w-1.5 h-1.5 bg-primary rounded-full"
-                      />
-                      <motion.span
-                        animate={{ opacity: [0, 1, 0] }}
-                        transition={{ duration: 0.8, repeat: Infinity, delay: 0.4 }}
-                        className="w-1.5 h-1.5 bg-primary rounded-full"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Quick Questions */}
-          <div className="p-4 bg-background/50 border-t border-primary/10">
-            <div className="flex flex-wrap gap-2">
-              {FAQ.map((item, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleQuestionClick(item.q, item.a)}
-                  disabled={isTyping}
-                  className="text-[10px] px-3 py-1 rounded-full border border-primary/30 text-primary/70 hover:bg-primary/10 hover:border-primary transition-all font-mono disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {item.q}
-                </button>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+            giganticjosha@gmail.com
+          </a>
+          <p className="text-[14px] text-muted">Available for projects</p>
+        </motion.aside>
       </div>
     </section>
   );

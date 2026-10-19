@@ -1,0 +1,41 @@
+{
+  "viewport": { "width": 1440, "height": 900 },
+  "sites": [
+    {
+      "name": "HIMAI",
+      "url": "https://www.himai.com.ng",
+      "out": "public/projects/himai.png"
+    },
+    {
+      "name": "Collapse Risk Predictor",
+      "url": "https://group-5-fo6xokxhv776ojjceed5od.streamlit.app",
+      "out": "public/projects/collapse-risk-predictor.png",
+      "wake": true
+    },
+    {
+      "name": "BlockCore",
+      "url": "https://blockcore.vercel.app/",
+      "out": "public/projects/blockcore.png"
+    },
+    {
+      "name": "Vogue",
+      "url": "https://vogue-teal.vercel.app/",
+      "out": "public/projects/vogue.png"
+    },
+    {
+      "name": "Nexus",
+      "url": "https://nexus-nu-navy.vercel.app/",
+      "out": "public/projects/nexus.png"
+    },
+    {
+      "name": "SALVAGE",
+      "url": "https://gaming-ecru-phi.vercel.app/",
+      "out": "public/projects/salvage.png"
+    },
+    {
+      "name": "La Dolce Vita",
+      "url": "https://ladolcevita-seven.vercel.app/",
+      "out": "public/projects/la-dolce-vita.png"
+    }
+  ]
+}

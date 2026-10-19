@@ -3,68 +3,91 @@
 @tailwind utilities;
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --primary: #0f172a;
-  --secondary: #475569;
+  --bg: #ffffff;
+  --ink: #000000;
+  --text: #111111;
+  --muted: #666666;
+  --surface: #f7f7f7;
+  --inverse: #0a0a0a;
+  --inverse-text: #ffffff;
+  --inverse-muted: #a3a3a3;
+
+  /* Shared page geometry: one pair of margins across every breakpoint scale. */
+  --page-margin: clamp(20px, 3vw, 32px);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--text);
+  background: var(--bg);
   font-family: var(--font-inter), sans-serif;
-  @apply overflow-x-hidden;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bg);
 }
 
 @layer components {
-  .hud-glass {
-    @apply bg-background/80 backdrop-blur-xl border border-primary/10 shadow-primary;
-  }
-  
-  .btn-primary {
-    @apply bg-primary text-background px-6 py-2 rounded-md font-space font-bold 
-           transition-all duration-300 hover:scale-105 active:scale-95;
-  }
-
-  .btn-secondary {
-    @apply bg-textSecondary text-background px-6 py-2 rounded-md font-space font-bold 
-           transition-all duration-300 hover:scale-105 active:scale-95;
+  .btn-solid {
+    @apply inline-flex items-center justify-center gap-2 bg-ink text-background
+           font-medium text-[16px]
+           min-h-[48px] px-6 no-underline
+           transition-[background-color,transform] duration-200
+           hover:bg-[#1f1f1f] active:scale-[0.98];
   }
 
-  .btn-ghost {
-    @apply border border-primary text-primary px-6 py-2 rounded-md font-space font-bold
-           transition-all duration-300 hover:bg-primary hover:text-background hover:scale-105 active:scale-95;
-  }
-
-  /* LCD Terminal Input Styling */
-  .terminal-input {
-    @apply bg-background/80 border border-primary/20 text-primary font-mono px-4 py-2 rounded-md outline-none transition-all;
-  }
-  .terminal-input:focus {
-    @apply border-primary;
+  .page-shell {
+    padding-left: var(--page-margin);
+    padding-right: var(--page-margin);
   }
 }
 
 @layer utilities {
-  .vertical-text {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
+  .grayscale-photo {
+    filter: grayscale(1) contrast(1.05);
   }
 
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  /* The one moving picture: a slow breath on the hero portrait. */
+  .motion-safe-shot {
+    transform-origin: center;
+    animation: slow-scale 28s ease-in-out infinite;
   }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .text-textSecondary {
-    color: var(--foreground);
-  }
+}
 
-  .text-highlight {
-    font-style: italic;
-    color: black;
+@keyframes slow-scale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe-shot {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
