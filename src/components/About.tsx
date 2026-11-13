@@ -19,7 +19,7 @@ export default function About() {
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-10"
         >
-          <p className="max-w-[24em] text-[23px] leading-[1.3] tracking-[-0.01em] text-text md:text-[30px] lg:text-[34px] lg:leading-[1.25]">
+          <p className="max-w-[24em] text-[23px] leading-[1.3] tracking-[-0.01em] text-text md:text-[30px] lg:text-[32px] lg:leading-[1.28]">
             <span className="relative float-left mr-4 mb-2 inline-block h-[3.2em] w-[3.2em] overflow-hidden bg-surface sm:mr-5">
               <Image
                 src="/assets/joshua.jpg"
@@ -33,7 +33,7 @@ export default function About() {
             Civil Engineering turned into software: Python backends, React
             frontends.
           </p>
-          <p className="mt-8 max-w-[24em] text-[23px] leading-[1.3] tracking-[-0.01em] text-text md:text-[30px] lg:text-[34px] lg:leading-[1.25]">
+          <p className="mt-8 max-w-[24em] text-[23px] leading-[1.3] tracking-[-0.01em] text-text md:text-[30px] lg:text-[32px] lg:leading-[1.28]">
             The systems thinking came from structures: load paths, tolerance,
             and what happens when a piece fails.
           </p>

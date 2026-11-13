@@ -68,12 +68,12 @@ export default function Contact() {
       {/* Bottom corners */}
       <div className="flex flex-col gap-4 text-[14px] text-inverse-muted sm:flex-row sm:items-center sm:justify-between">
         <p>Lagos, Nigeria · replies within two days</p>
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
           <a
             href="https://x.com/Agabo07"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors duration-200 hover:text-inverse-text"
+            className="inline-flex min-h-[44px] items-center transition-colors duration-200 hover:text-inverse-text"
           >
             X ↗
           </a>
@@ -81,7 +81,7 @@ export default function Contact() {
             href="https://github.com/agaboo1981"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors duration-200 hover:text-inverse-text"
+            className="inline-flex min-h-[44px] items-center transition-colors duration-200 hover:text-inverse-text"
           >
             GitHub ↗
           </a>
@@ -89,7 +89,7 @@ export default function Contact() {
             href="https://linkedin.com/in/joshua-adesina"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors duration-200 hover:text-inverse-text"
+            className="inline-flex min-h-[44px] items-center transition-colors duration-200 hover:text-inverse-text"
           >
             LinkedIn ↗
           </a>

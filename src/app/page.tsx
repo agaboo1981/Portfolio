@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+import CaseStudy from "@/components/CaseStudy";
 import dynamic from "next/dynamic";
 
 const About = dynamic(() => import("@/components/About"));
@@ -11,7 +11,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 export default function Home() {
   return (
     <div className="bg-background min-h-svh text-text">
-      <Hero />
+      <CaseStudy />
       <Projects />
       <About />
       <Skills />

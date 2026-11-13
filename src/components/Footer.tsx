@@ -57,12 +57,14 @@ export default function Footer() {
                       {...(item.external
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}
-                      className="text-[14px] text-inverse-muted transition-colors duration-200 hover:text-inverse-text"
+                      className="inline-flex min-h-[44px] items-center text-[14px] text-inverse-muted transition-colors duration-200 hover:text-inverse-text"
                     >
                       {item.label}
                     </a>
                   ) : (
-                    <span className="text-[14px] text-inverse-muted">{item.label}</span>
+                    <span className="inline-flex min-h-[44px] items-center text-[14px] text-inverse-muted">
+                      {item.label}
+                    </span>
                   )}
                 </li>
               ))}

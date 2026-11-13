@@ -5,7 +5,7 @@
 // Failure policy: a site that can't be captured (asleep, blocked, timeout) never
 // overwrites its existing PNG — the script logs the failure and continues, so a
 // scheduled run can only ever improve the screenshots, never break them.
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { launchBrowser, captureSite } from "./lib-capture.mjs";
 
 const config = JSON.parse(readFileSync(new URL("./screenshots.config.json", import.meta.url), "utf8"));

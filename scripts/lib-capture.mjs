@@ -3,7 +3,6 @@
 // Works wherever a Chrome/Edge/Chromium binary exists (Windows, macOS, Linux CI).
 import puppeteer from "puppeteer-core";
 import { existsSync, renameSync } from "node:fs";
-import path from "node:path";
 
 const CANDIDATES = [
   // Env override first

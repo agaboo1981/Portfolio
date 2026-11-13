@@ -17,11 +17,11 @@ type Project = {
 const projects: Project[] = [
   {
     title: "HIMAI",
-    what: "An AI tutor for university subjects: explains material, saves what it finds, quizzes you.",
-    built: "I designed the backend architecture and API, and built the core AI system logic. Deployed on Railway.",
+    what: "An AI tutor for university subjects: explained material, kept what it found, and quizzed you on it.",
+    built:
+      "I designed the backend architecture and API, and built the core AI system logic. The deployed service is no longer running.",
     stack: "Python · API design · Railway",
     image: "/projects/himai.png",
-    liveUrl: "https://www.himai.com.ng",
     githubUrl: "https://github.com/BAMZY0030/AI-project-",
   },
   {
@@ -104,7 +104,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="work" className="page-shell mx-auto max-w-[1440px] pb-20 pt-16 sm:pt-24 lg:pb-28">
+    <section id="projects" className="page-shell mx-auto max-w-[1440px] pb-20 pt-16 sm:pt-24 lg:pb-28">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -112,11 +112,11 @@ export default function Projects() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="mb-10 sm:mb-16"
       >
-        <h2 className="font-display text-[34px] font-bold leading-[1.02] tracking-[-0.03em] text-ink sm:text-[44px] lg:text-[58px]">
+        <h2 className="font-display text-[clamp(34px,5.8vw,58px)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
           Selected work
         </h2>
         <p className="mt-3 text-[16px] text-muted">
-          Seven projects, shipped. Hover a row to see it.
+          Seven projects. Hover a row to see it.
         </p>
       </motion.div>
 
@@ -128,11 +128,17 @@ export default function Projects() {
       >
         {/* The floating preview: one layer with every screenshot stacked */}
         <motion.div
-          style={reduced ? undefined : { x: px, y: py }}
+          style={
+            reduced
+              ? { visibility: hovered === null ? "hidden" : "visible" }
+              : { x: px, y: py, visibility: hovered === null ? "hidden" : "visible" }
+          }
           className="pointer-events-none absolute left-0 top-0 z-20"
+          aria-hidden="true"
         >
           <div className="relative translate-x-6 -translate-y-1/2">
             <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={
                 hovered === null
                   ? { opacity: 0, scale: 0.96 }
@@ -172,7 +178,7 @@ export default function Projects() {
           >
             <h3 className="col-span-4 font-display text-[28px] font-bold leading-tight tracking-[-0.02em] text-ink">
               <a
-                href={project.liveUrl}
+                href={project.liveUrl ?? project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="after:absolute after:inset-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
