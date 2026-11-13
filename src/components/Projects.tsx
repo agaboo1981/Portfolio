@@ -4,6 +4,9 @@ import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
+const BLUR =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAFAAgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ALAAH//Z";
+
 type Project = {
   title: string;
   what: string;
@@ -147,18 +150,17 @@ export default function Projects() {
               transition={{ duration: 0.25, ease: "easeOut" }}
               className="relative h-[290px] w-[430px] overflow-hidden bg-surface"
             >
-              {projects.map((p, i) => (
+              {hovered !== null && (
                 <Image
-                  key={p.title}
-                  src={p.image}
+                  src={projects[hovered].image}
                   alt=""
                   fill
+                  placeholder="blur"
+                  blurDataURL={BLUR}
                   sizes="430px"
-                  className={`object-cover object-top transition-opacity duration-200 ${
-                    i === hovered ? "opacity-100" : "opacity-0"
-                  }`}
+                  className="object-cover object-top"
                 />
-              ))}
+              )}
             </motion.div>
           </div>
         </motion.div>
@@ -222,7 +224,9 @@ export default function Projects() {
                 src={project.image}
                 alt={`${project.title} screenshot`}
                 fill
-                sizes="100vw"
+                placeholder="blur"
+                blurDataURL={BLUR}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-top"
               />
             </div>
